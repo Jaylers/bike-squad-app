@@ -2,15 +2,15 @@
     <string name="app_name">Bike Squad</string>
 
     //Auth
-    <string name="auth_message_user_gmail">User Gmail Account</string>
+    <string name="auth_message_user_gmail">Sign in with your account</string>
     <string name="auth_message_gmail_account">Gmail Account</string>
     <string name="auth_message_username">Username</string>
-    <string name="auth_message_machine_serial_number">Machine Serial Number</string>
+    <string name="auth_message_password">Password</string>
     <string name="auth_message_sign_in">Sign in</string>
-    <string name="auth_message_create">Create</string>
 
     //Error message
     <string name="err_message_required">Required</string>
+    <string name="err_message_not_email">Invalid email</string>
     <string name="err_message_connection_failure">Network connection error \n Please check your connection</string>
 
     //Language
@@ -32,6 +32,8 @@
     <string name="app_message_call">Call</string>
     <string name="app_message_app_language">Application language is </string>
     <string name="app_message_language">language</string>
+    <string name="app_message_no_account">Don\'t have an account?</string>
+    <string name="app_message_register">register now!</string>
     <string name="app_message_sign_out">sign out</string>
     <string name="err_message_connecting">Connecting . .</string>
 

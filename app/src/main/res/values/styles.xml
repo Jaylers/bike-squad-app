@@ -18,4 +18,16 @@
 
     <style name="FullscreenNoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="button_round_style">
+        <item name="android:background">@drawable/custom_border_round</item>
+    </style>
+
+    <style name="button_square_style">
+        <item name="android:background">@drawable/custom_border_square</item>
+    </style>
+
+    <style name="dialog_base_style">
+        <item name="android:background">@drawable/dialog_sharpe</item>
+    </style>
+
 </resources>
