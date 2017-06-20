@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="color_primary">#3F51B5</color>
+    <color name="color_primary_dark">#303F9F</color>
+    <color name="color_accent">#FF4081</color>
+
+    <color name="color_red">#FF0000</color>
+    <color name="color_deep_orange">#FF4000</color>
+    <color name="color_orange">#FF8000</color>
+    <color name="color_deep_yellow">#FFBF00</color>
+    <color name="color_yellow">#FFFF00</color>
+    <color name="color_deep_light_green">#80FF00</color>
+    <color name="color_light_green">#40FF00</color>
+    <color name="color_green">#00FF00</color>
+    <color name="color_deep_green">#088A08</color>
+    <color name="color_blue_sky">#00FFFF</color>
+    <color name="color_blue">#0000FF</color>
+    <color name="color_deep_Blue">#08088A</color>
+    <color name="color_purple">#6A0888</color>
+    <color name="color_violet">#8904B1</color>
+    <color name="color_deep_Pink">#DF0174</color>
+    <color name="color_pink">#FF00FF</color>
+    <color name="color_light_pink">#F781F3</color>
+
+    <color name="color_black">#000000</color>
+    <color name="color_white">#FFFFFF</color>
+    <color name="color_gray">#424242</color>
+    <color name="color_silver">#D8D8D8</color>
+    <color name="color_light_gray">#e6e6e6</color>
+    <color name="silver_gray">#cccccc</color>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="silver_overlay">#66D8D8D8</color>
+    <color name="white_overlay">#66FFFFFF</color>
+    <color name="white_light_overlay">#33FFFFFF</color>
+    <color name="white_transparent">#11FFFFFF</color>
+    <color name="white_alpha">#20FFFFFF</color>
+    <color name="gray_overlay">#FF888888</color>
+
+    <color name="color_pastel_blue_sky">#4793ff</color>
+    <color name="color_pastel_blue">#5747FF</color>
+    <color name="color_pastel_deep_blue">#1942ED</color>
+    <color name="color_pastel_violet">#B347FF</color>
+    <color name="color_pastel_pink">#FF4793</color>
+    <color name="color_pastel_rose">#ED1942</color>
+    <color name="color_pastel_red">#FF5747</color>
+    <color name="color_pastel_orange">#FFB347</color>
+    <color name="color_pastel_yellow">#EFFF47</color>
+
+</resources>

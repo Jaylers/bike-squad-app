@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">Bike Squad</string>
+
+    //Auth
+    <string name="auth_message_user_gmail">User Gmail Account</string>
+    <string name="auth_message_gmail_account">Gmail Account</string>
+    <string name="auth_message_username">Username</string>
+    <string name="auth_message_machine_serial_number">Machine Serial Number</string>
+    <string name="auth_message_sign_in">Sign in</string>
+    <string name="auth_message_create">Create</string>
+
+    //Error message
+    <string name="err_message_required">Required</string>
+    <string name="err_message_connection_failure">Network connection error \n Please check your connection</string>
+
+    //Language
+    <string name="language_thailand" translatable="false"> ภาษาไทย</string>
+    <string name="language_english" translatable="false"> English</string>
+
+    //Normal message
+    <string name="message_back">Back</string>
+    <string name="message_close">Close</string>
+    <string name="message_retry">Retry</string>
+    <string name="app_message_ok">OK</string>
+    <string name="app_message_cancel">Cancel</string>
+    <string name="app_message_request_permission_call">Please allow us to make a Call</string>
+    <string name="app_message_permission_denied">Permission denied</string>
+    <string name="app_message_confirm_to_close_app">Press back again to close</string>
+    <string name="app_message_dismiss">Dismiss</string>
+    <string name="app_message_yes">Yes</string>
+    <string name="app_message_no">No</string>
+    <string name="app_message_call">Call</string>
+    <string name="app_message_app_language">Application language is </string>
+    <string name="app_message_language">language</string>
+    <string name="app_message_sign_out">sign out</string>
+    <string name="err_message_connecting">Connecting . .</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_activity">Activity</string>
+    <string name="title_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
