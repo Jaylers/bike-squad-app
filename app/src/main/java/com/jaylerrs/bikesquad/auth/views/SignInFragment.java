@@ -49,12 +49,22 @@ public class SignInFragment extends Fragment {
         }
     }
 
+    @OnClick(R.id.txt_forget_password) public void onForgetPassword(){
+        ForgetPasswordFragment forgetPasswordFragment = new ForgetPasswordFragment();
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction ft = manager.beginTransaction();
+        ft.setCustomAnimations(R.anim.slide_in_from_right,
+                R.anim.slide_out_to_left);
+        ft.replace(R.id.frame_fragment_base_auth, forgetPasswordFragment);
+        ft.commit();
+    }
+
     @OnClick(R.id.txt_sign_in_register) public void onRegister(){
         RegisterFragment registerFragment = new RegisterFragment();
         FragmentManager manager = getFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
-        ft.setCustomAnimations(R.anim.fade_in,
-                R.anim.fade_out);
+        ft.setCustomAnimations(R.anim.slide_up_in_from_buttom,
+                R.anim.slide_up_out);
         ft.replace(R.id.frame_fragment_base_auth, registerFragment);
         ft.commit();
     }

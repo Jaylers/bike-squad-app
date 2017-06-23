@@ -5,8 +5,10 @@
     <string name="auth_message_user_gmail">Sign in with your account</string>
     <string name="auth_message_gmail_account">Gmail Account</string>
     <string name="auth_message_username">Username</string>
-    <string name="auth_message_password">Password</string>
+    <string name="auth_message_password">password</string>
     <string name="auth_message_sign_in">Sign in</string>
+    <string name="auth_message_forget_password">forget password</string>
+    <string name="auth_message_username_or_email">username or email</string>
 
     //Error message
     <string name="err_message_required">Required</string>
@@ -23,6 +25,7 @@
     <string name="message_retry">Retry</string>
     <string name="app_message_ok">OK</string>
     <string name="app_message_cancel">Cancel</string>
+    <string name="app_message_send_an_email">Send an email</string>
     <string name="app_message_request_permission_call">Please allow us to make a Call</string>
     <string name="app_message_permission_denied">Permission denied</string>
     <string name="app_message_confirm_to_close_app">Press back again to close</string>

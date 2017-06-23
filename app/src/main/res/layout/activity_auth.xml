@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/linear_auth_base"
+    android:background="@color/color_pastel_orange"
+    android:alpha="0.9"
     tools:context="com.jaylerrs.bikesquad.auth.views.AuthActivity">
     <FrameLayout
         android:id="@+id/frame_fragment_base_auth"

@@ -36,7 +36,7 @@
             android:textAlignment="center"
             android:inputType="textEmailAddress"
             style="@style/button_square_style"
-            android:hint="@string/auth_message_username"/>
+            android:hint="@string/auth_message_username_or_email"/>
 
         <EditText
             android:id="@+id/edt_sign_in_password"
@@ -61,10 +61,22 @@
             android:layout_marginEnd="80dp"
             style="@style/button_round_style"
             android:text="@string/auth_message_sign_in"/>
-        <LinearLayout
-            android:layout_below="@+id/btn_sign_in"
+        <TextView
+            android:id="@+id/txt_forget_password"
+            android:layout_below="@id/btn_sign_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="italic"
+            android:text="@string/auth_message_forget_password"
+            android:textAlignment="textEnd"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:padding="15dp"
             android:gravity="center">
             <TextView

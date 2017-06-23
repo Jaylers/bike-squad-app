@@ -126,33 +126,44 @@ public class AuthActivity extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
         if (currentFragment instanceof SignInFragment){
-            if (confirm>=1){
-                confirm = 0;
-                finish();
-            }else {
-                confirm++;
-                Toast toast = Toast.makeText(getApplicationContext(),
-                        getString(R.string.app_message_confirm_to_close_app),
-                        Toast.LENGTH_SHORT);
-                toast.show();
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        confirm = 0;
-                    }
-                },2000);
-            }
+            confirmToExit();
         }else if (currentFragment instanceof SettingsFragment){
             ft.setCustomAnimations(R.anim.slide_down_in,
                     R.anim.slide_down_out);
             ft.replace(R.id.frame_fragment_base_auth, signInFragment);
             ft.commit();
-        }else {
-            ft.setCustomAnimations(R.anim.fade_in,
+        }else if (currentFragment instanceof RegisterFragment){
+            ft.setCustomAnimations(R.anim.slide_down_in,
                     R.anim.fade_out);
             ft.replace(R.id.frame_fragment_base_auth, signInFragment);
             ft.commit();
+        }else if (currentFragment instanceof ForgetPasswordFragment){
+            ft.setCustomAnimations(R.anim.slide_in_from_left,
+                    R.anim.slide_out_to_right);
+            ft.replace(R.id.frame_fragment_base_auth, signInFragment);
+            ft.commit();
+        }else {
+            confirmToExit();
+        }
+    }
+
+    private void confirmToExit(){
+        if (confirm>=1){
+            confirm = 0;
+            finish();
+        }else {
+            confirm++;
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    getString(R.string.app_message_confirm_to_close_app),
+                    Toast.LENGTH_SHORT);
+            toast.show();
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    confirm = 0;
+                }
+            },2000);
         }
     }
 }
