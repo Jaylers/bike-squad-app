@@ -9,6 +9,11 @@
     <string name="auth_message_sign_in">Sign in</string>
     <string name="auth_message_forget_password">forget password</string>
     <string name="auth_message_username_or_email">username or email</string>
+    <string name="auth_message_email">email</string>
+
+    <string name="auth_message_first_name">first name</string>
+    <string name="auth_message_last_name">last name</string>
+    <string name="auth_message_confirm_password">confirm password</string>
 
     //Error message
     <string name="err_message_required">Required</string>
@@ -36,7 +41,7 @@
     <string name="app_message_app_language">Application language is </string>
     <string name="app_message_language">language</string>
     <string name="app_message_no_account">Don\'t have an account?</string>
-    <string name="app_message_register">register now!</string>
+    <string name="app_message_register">register now</string>
     <string name="app_message_sign_out">sign out</string>
     <string name="err_message_connecting">Connecting . .</string>
 

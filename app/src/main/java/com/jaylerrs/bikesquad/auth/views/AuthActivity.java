@@ -134,7 +134,7 @@ public class AuthActivity extends AppCompatActivity {
             ft.commit();
         }else if (currentFragment instanceof RegisterFragment){
             ft.setCustomAnimations(R.anim.slide_down_in,
-                    R.anim.fade_out);
+                    R.anim.slide_down_out);
             ft.replace(R.id.frame_fragment_base_auth, signInFragment);
             ft.commit();
         }else if (currentFragment instanceof ForgetPasswordFragment){

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "159347860968",
+    "firebase_url": "https://bike-squad.firebaseio.com",
+    "project_id": "bike-squad",
+    "storage_bucket": "bike-squad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:159347860968:android:335c99a81529559e",
+        "android_client_info": {
+          "package_name": "com.jaylerr.bikesquad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "159347860968-a91toioj9cehv3950splkoq0sv255qlq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jaylerr.bikesquad",
+            "certificate_hash": "8bf9315681a0890ba94d248c6f558994eb075f5f"
+          }
+        },
+        {
+          "client_id": "159347860968-ddsdlf4c08vmckn6thf2lnc9cck1it15.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0I01Px4tSj3UCqjICpgjI6pw7L5k2WxE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "159347860968-ddsdlf4c08vmckn6thf2lnc9cck1it15.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

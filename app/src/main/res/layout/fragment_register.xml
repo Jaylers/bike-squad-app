@@ -2,12 +2,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white_light_overlay"
     tools:context="com.jaylerrs.bikesquad.auth.views.RegisterFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/img_reg_logo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:src="@mipmap/ic_launcher"/>
+        <EditText
+            android:id="@+id/edt_reg_email"
+            android:layout_below="@+id/img_reg_logo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
+            android:textAlignment="center"
+            android:inputType="textEmailAddress"
+            android:hint="@string/auth_message_email"
+            style="@style/button_square_style"/>
+
+        <EditText
+            android:id="@+id/edt_reg_first_name"
+            android:layout_below="@+id/edt_reg_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
+            android:textAlignment="center"
+            android:inputType="textPersonName"
+            android:hint="@string/auth_message_first_name"
+            style="@style/button_square_style"/>
+
+        <EditText
+            android:id="@+id/edt_reg_last_name"
+            android:layout_below="@+id/edt_reg_first_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
+            android:textAlignment="center"
+            android:inputType="textPersonName"
+            android:hint="@string/auth_message_last_name"
+            style="@style/button_square_style"/>
+
+        <EditText
+            android:id="@+id/edt_reg_password"
+            android:layout_below="@+id/edt_reg_last_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
+            android:textAlignment="center"
+            android:inputType="textPassword"
+            android:hint="@string/auth_message_password"
+            style="@style/button_square_style"/>
+
+        <EditText
+            android:id="@+id/edt_reg_confirm_password"
+            android:layout_below="@+id/edt_reg_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
+            android:textAlignment="center"
+            android:inputType="textPassword"
+            android:hint="@string/auth_message_confirm_password"
+            style="@style/button_square_style"/>
+
+        <Button
+            android:id="@+id/btn_reg_submit"
+            android:layout_below="@+id/edt_reg_confirm_password"
+            style="@style/button_round_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
+            android:text="@string/app_message_register"/>
+
+        <TextView
+            android:id="@+id/txt_register_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:padding="20dp"
+            android:textStyle="bold"
+            android:text="@string/message_back"/>
+
+    </RelativeLayout>
 </FrameLayout>
