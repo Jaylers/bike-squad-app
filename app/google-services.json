@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "159347860968",
-    "firebase_url": "https://bike-squad.firebaseio.com",
-    "project_id": "bike-squad",
-    "storage_bucket": "bike-squad.appspot.com"
+    "project_number": "424479616186",
+    "firebase_url": "https://bike-squad-c5317.firebaseio.com",
+    "project_id": "bike-squad-c5317",
+    "storage_bucket": "bike-squad-c5317.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:159347860968:android:335c99a81529559e",
+        "mobilesdk_app_id": "1:424479616186:android:04235efa87048d0e",
         "android_client_info": {
-          "package_name": "com.jaylerr.bikesquad"
+          "package_name": "com.jaylerrs.bikesquad"
         }
       },
       "oauth_client": [
         {
-          "client_id": "159347860968-a91toioj9cehv3950splkoq0sv255qlq.apps.googleusercontent.com",
+          "client_id": "424479616186-tua048na1b89v6damd2kep8ns43vdccb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.jaylerr.bikesquad",
+            "package_name": "com.jaylerrs.bikesquad",
             "certificate_hash": "8bf9315681a0890ba94d248c6f558994eb075f5f"
           }
         },
         {
-          "client_id": "159347860968-ddsdlf4c08vmckn6thf2lnc9cck1it15.apps.googleusercontent.com",
+          "client_id": "424479616186-2chg4cmvmfc0bqhg5ejtn54ta4voqtbf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB0I01Px4tSj3UCqjICpgjI6pw7L5k2WxE"
+          "current_key": "AIzaSyAf5avKmw0xOpPBmLzw23pvihlCd1oyAaI"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "159347860968-ddsdlf4c08vmckn6thf2lnc9cck1it15.apps.googleusercontent.com",
+              "client_id": "424479616186-2chg4cmvmfc0bqhg5ejtn54ta4voqtbf.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
