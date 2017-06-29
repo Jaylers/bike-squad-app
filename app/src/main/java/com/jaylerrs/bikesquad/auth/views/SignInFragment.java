@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.jaylerrs.bikesquad.R;
 
 import butterknife.BindView;
@@ -27,6 +29,8 @@ public class SignInFragment extends Fragment {
     }
 
     View view;
+    DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+
     @BindView(R.id.edt_sign_in_username) EditText edt_username;
     @BindView(R.id.edt_sign_in_password) EditText edt_password;
     String password, username;
