@@ -4,20 +4,26 @@
     //Auth
     <string name="auth_message_user_gmail">Sign in with your account</string>
     <string name="auth_message_gmail_account">Gmail Account</string>
-    <string name="auth_message_username">Username</string>
     <string name="auth_message_password">  Password</string>
     <string name="auth_message_sign_in">Sign in</string>
     <string name="auth_message_forget_password">Forgot your password?</string>
-    <string name="auth_message_username_or_email">  Username or Email</string>
-    <string name="auth_message_email">Email</string>
+    <string name="auth_message_username">Username</string>
+    <string name="auth_email">Email</string>
     <string name="auth_message_or">or</string>
     <string name="auth_message_first_name">First name</string>
     <string name="auth_message_last_name">Last name</string>
     <string name="auth_message_confirm_password">Confirm password</string>
+    <string name="auth_message_loading">Loading…</string>
+    <string name="auth_message_signing_in">Signing in</string>
+    <string name="auth_message_auth_failure">Authentication failed, check your email and password or sign up</string>
+
+    //Register
+    <string name="reg_message_registering">registering</string>
 
     //Error message
     <string name="err_message_required">Required</string>
     <string name="err_message_not_email">Invalid email</string>
+    <string name="err_message_difference_password">Password is not match!</string>
     <string name="err_message_connection_failure">Network connection error \n Please check your connection</string>
 
     //Language

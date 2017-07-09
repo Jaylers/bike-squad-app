@@ -5,4 +5,34 @@
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
     <dimen name="nav_header_height">160dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="card_margin">26dp</dimen>
+    <dimen name="padding_mini_menu">2dp</dimen>
+    <dimen name="actionbar_margin_top">40dp</dimen>
+    <dimen name="search_icon_width_height">40dp</dimen>
+    <dimen name="sign_in_margin_top">100dp</dimen>
+    <dimen name="actionbar_height">60dp</dimen>
+    <dimen name="progressbar_primary_loading">30dp</dimen>
+    <dimen name="content_padding">5dp</dimen>
+    <dimen name="icon_action_bar_padding">8dp</dimen>
+    <dimen name="text_profile_margin">1dp</dimen>
+    <dimen name="contact_menu_padding">15dp</dimen>
+    <dimen name="layout_value_2">2dp</dimen>
+    <dimen name="layout_value_3">3dp</dimen>
+    <dimen name="layout_value_5">5dp</dimen>
+    <dimen name="layout_value_8">8dp</dimen>
+    <dimen name="layout_value_10">10dp</dimen>
+    <dimen name="layout_value_12">12dp</dimen>
+    <dimen name="layout_value_14">14dp</dimen>
+    <dimen name="content_margin">10dp</dimen>
+    <dimen name="text_btn_default_margin">10dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="menu_size">35dp</dimen>
+    <dimen name="menu_switch_width">80dp</dimen>
+    <dimen name="menu_switch_min_width">50dp</dimen>
+    <dimen name="menu_padding">8dp</dimen>
+    <dimen name="contact_card_title">10dp</dimen>
+    <dimen name="contact_line_margin">30dp</dimen>
+    <dimen name="contact_text_size">18sp</dimen>
 </resources>

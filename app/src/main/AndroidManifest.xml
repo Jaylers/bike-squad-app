@@ -27,7 +27,14 @@
         <activity
             android:name=".main.MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/FullscreenNoActionBar"></activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/FullscreenNoActionBar" />
+        <activity android:name=".auth.views.BaseActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".auth.views.RegisterActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".auth.views.ForgetActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
