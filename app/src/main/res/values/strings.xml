@@ -1,29 +1,34 @@
 <resources>
     <string name="app_name">Bike Squad</string>
 
-    //Auth
-    <string name="auth_message_user_gmail">Sign in with your account</string>
-    <string name="auth_message_gmail_account">Gmail Account</string>
-    <string name="auth_message_password">  Password</string>
-    <string name="auth_message_sign_in">Sign in</string>
-    <string name="auth_message_forget_password">Forgot your password?</string>
-    <string name="auth_message_username">Username</string>
-    <string name="auth_email">Email</string>
-    <string name="auth_message_or">or</string>
-    <string name="auth_message_first_name">First name</string>
-    <string name="auth_message_last_name">Last name</string>
-    <string name="auth_message_confirm_password">Confirm password</string>
-    <string name="auth_message_loading">Loading…</string>
-    <string name="auth_message_signing_in">Signing in</string>
-    <string name="auth_message_auth_failure">Authentication failed, check your email and password or sign up</string>
+    //Message
+    <string name="message_loading">loading</string>
 
-    //Register
-    <string name="reg_message_registering">registering</string>
+    //Auth
+    <string name="auth_message_user_gmail">Sign in with your Google account</string>
+    <string name="auth_message_signing_in">Signing in</string>
+    <string name="auth_message_auth_failure_wrong_email_password">Authentication failed, check your
+        email and password or sign up</string>
+    <string name="auth_message_auth_failure">Authentication failed, please try again</string>
+
+
+    //Verify
+    <string name="ver_message_log_out">log out</string>
+    <string name="ver_message_verify_email">verify email</string>
+    <string name="ver_message_verify_send_to">Verification email sent to </string>
+    <string name="ver_message_title">Verification</string>
+    <string name="ver_message_detail">we\'ll send a verification link to the email address you used
+        to create the account. If you don\'t verify your address, you may not be able to access
+        certain Bike Squad products or features.</string>
+    <string name="ver_message_detail_after_send">If you do not receive the confirmation message
+        within a few minutes of register or resend confirmation, please check your Junk E-mail
+        folder just in case the confirmation email got delivered there instead of your inbox. If so,
+        select the confirmation message and click Not Junk, which will allow future messages to
+        get through.</string>
 
     //Error message
     <string name="err_message_required">Required</string>
     <string name="err_message_not_email">Invalid email</string>
-    <string name="err_message_difference_password">Password is not match!</string>
     <string name="err_message_connection_failure">Network connection error \n Please check your connection</string>
 
     //Language
@@ -46,8 +51,6 @@
     <string name="app_message_call">Call</string>
     <string name="app_message_app_language">Application language is </string>
     <string name="app_message_language">language</string>
-    <string name="app_message_no_account">Don\'t have an account?</string>
-    <string name="app_message_register">register now</string>
     <string name="app_message_sign_out">sign out</string>
     <string name="err_message_connecting">Connecting . .</string>
 
@@ -64,14 +67,10 @@
     <string name="action_settings">Settings</string>
 
     //auth
-    <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
     <string name="auth_failed">Authentication failed, check your email and password or sign up</string>
     <string name="change_email">Change Email</string>
     <string name="change_password">Change Password</string>
-    <string name="send_password_reset_email">Send Password reset email</string>
-    <string name="remove_user">Remove user</string>
     <string name="new_pass">New Password</string>
-    <string name="title_activity_profile">Firebase</string>
     <string name="title_activity_login">Sign in</string>
     <string name="btn_link_to_login">Already registered. Login Me!</string>
     <string name="btn_forgot_password">Forgot your password?</string>
@@ -84,5 +83,13 @@
     <string name="btn_sign_out">Sign Out</string>
     <string name="lbl_forgot_password">Forgot password?</string>
     <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
+
+    //Menu
+    <string name="menu_main_profile">Profile</string>
+    <string name="menu_main_friends">Friends</string>
+    <string name="menu_main_event">Event</string>
+    <string name="menu_main_route">Route</string>
+    <string name="menu_main_Bike">Biking</string>
+    <string name="menu_main_setting">Settings</string>
 
 </resources>

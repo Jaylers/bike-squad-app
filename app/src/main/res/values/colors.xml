@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="color_primary">#3F51B5</color>
-    <color name="color_primary_dark">#303F9F</color>
-    <color name="color_accent">#FF4081</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FFA000</color>
 
     <color name="color_red">#FF0000</color>
     <color name="color_deep_orange">#FF4000</color>
@@ -29,6 +29,7 @@
     <color name="color_silver">#D8D8D8</color>
     <color name="color_light_gray">#e6e6e6</color>
     <color name="silver_gray">#cccccc</color>
+    <color name="grey_300">#E0E0E0</color>
 
     <color name="black_overlay">#66000000</color>
     <color name="silver_overlay">#66D8D8D8</color>
