@@ -25,6 +25,15 @@ public class ColorManager {
         return Color.HSVToColor(hsv);
     }
 
+    public GradientDrawable getColorDrawable(String color){
+        GradientDrawable gradientDrawable = new GradientDrawable(
+                GradientDrawable.Orientation.RIGHT_LEFT,
+                new int[] {colorParser(parser(color)),
+                        modifyBrightness(colorParser(parser(color)), (float) 1.0)});
+        gradientDrawable.setCornerRadius(0f);
+        return gradientDrawable;
+    }
+
     public GradientDrawable getGradientDrawable(String color){
         GradientDrawable gradientDrawable = new GradientDrawable(
                 GradientDrawable.Orientation.RIGHT_LEFT,
