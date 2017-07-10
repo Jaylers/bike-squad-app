@@ -4,15 +4,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
-import com.jaylerrs.bikesquad.auth.views.AuthActivity;
+import com.jaylerrs.bikesquad.auth.AuthActivity;
 
 /**
  * Created by jaylerr on 07-Jun-17.
  */
 
 public class ApplicationManager {
-    Activity activity;
-    Context context;
+    private Activity activity;
+    private Context context;
 
     public ApplicationManager(Context context) {
         this.context = context;

@@ -2,8 +2,8 @@ package com.jaylerrs.bikesquad.main;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -16,22 +16,27 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.jaylerrs.bikesquad.R;
-import com.jaylerrs.bikesquad.auth.views.AuthActivity;
 import com.jaylerrs.bikesquad.main.task.UserTask;
+import com.jaylerrs.bikesquad.users.ProfileActivity;
+import com.jaylerrs.bikesquad.utility.dialog.DialogLoading;
 import com.jaylerrs.bikesquad.utility.manager.ColorManager;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener {
 
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
     private Activity activity;
     private GoogleApiClient mGoogleApiClient;
-    private View mHeaderLayour;
+    private View mHeaderLayout;
+    private Progressing progressing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +57,17 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        // Configure Google Sign In
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        // [END config_signin]
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -60,13 +76,25 @@ public class MainActivity extends AppCompatActivity
         ColorManager colorManager = new ColorManager();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        mHeaderLayour = navigationView.getHeaderView(0);
+        mHeaderLayout = navigationView.getHeaderView(0);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
-        mHeaderLayour.setBackground(colorManager.getGradientDrawable(colorManager.parser("#FFA000")));
+        mHeaderLayout.setBackground(colorManager.getGradientDrawable(colorManager.parser("#FFA000")));
 
-        UserTask userTask = new UserTask(mHeaderLayour, this);
+        UserTask userTask = new UserTask(mHeaderLayout, this);
         userTask.setUserProfile();
+
+        setOnClick();
+    }
+
+    private void setOnClick(){
+        mHeaderLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -93,7 +121,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-
+            mHeaderLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                    startActivity(intent);
+                }
+            });
         } else if (id == R.id.nav_friends) {
 
         } else if (id == R.id.nav_event) {
@@ -103,23 +137,23 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_bike) {
 
         } else if (id == R.id.nav_settings) {
-            revokeAccess();
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
-            drawer.closeDrawer(GravityCompat.START);
-        }
+        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    private void revokeAccess() {
-        // Firebase sign out
-        mAuth.signOut();
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
-        // Google revoke access
-        Intent intent = new Intent(MainActivity.this, AuthActivity.class);
-        startActivity(intent);
-        activity.finish();
+    }
+
+    private class Progressing extends DialogLoading{
+
+        public Progressing(Activity activity, String message) {
+            super(activity, message);
+        }
     }
 }

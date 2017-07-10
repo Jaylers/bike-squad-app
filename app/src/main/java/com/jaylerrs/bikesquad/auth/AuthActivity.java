@@ -1,4 +1,4 @@
-package com.jaylerrs.bikesquad.auth.views;
+package com.jaylerrs.bikesquad.auth;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,6 +21,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -42,9 +45,13 @@ public class AuthActivity extends AppCompatActivity implements
         View.OnClickListener{
 
     @BindView(R.id.txt_sign_in_message) TextView mMessage;
-    @BindView(R.id.relate_auth_verify) RelativeLayout mRelat_verify;
-    @BindView(R.id.relat_auth_sign_in) RelativeLayout mRelat_sign_in;
+    @BindView(R.id.relate_auth_verify) RelativeLayout mRelate_verify;
+    @BindView(R.id.relat_auth_sign_in) RelativeLayout mRelate_sign_in;
     @BindView(R.id.linear_auth_base) LinearLayout mAuth_base;
+    @BindView(R.id.txt_verify_detail) TextView mVerify_detail;
+    @BindView(R.id.btn_verify_log_out) Button mVerify_log_out;
+    @BindView(R.id.btn_verify_submit) Button mVerify;
+
 
     private static final int RC_SIGN_IN = 9001;
     private ConnectionsManager connection;
@@ -106,6 +113,29 @@ public class AuthActivity extends AppCompatActivity implements
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
+    @OnClick(R.id.btn_verify_submit)public void onVerify(){
+        sendEmailVerification();
+    }
+
+    @OnClick(R.id.btn_verify_log_out) public void onLogOut(){
+        Log.i("User", "Sign out");
+        mAuth.signOut();
+        Auth.GoogleSignInApi.revokeAccess(mGoogleApiClient).setResultCallback(
+                new ResultCallback<Status>() {
+                    @Override
+                    public void onResult(@NonNull Status status) {
+                        reStartApp();
+                    }
+                });
+        //reStartApp();
+    }
+
+    private void reStartApp(){
+        Intent intent = new Intent(activity, AuthActivity.class);
+        activity.finish();
+        startActivity(intent);
+    }
+
     private void connectionFailure(){
         Snackbar.make(mAuth_base, getString(R.string.err_message_connection_failure),
                 Snackbar.LENGTH_INDEFINITE).setAction(getString(R.string.message_retry), new View.OnClickListener() {
@@ -123,16 +153,50 @@ public class AuthActivity extends AppCompatActivity implements
     }
 
     private void connectionProperty(){
+
         if (currentUser != null){
+            Boolean aa = currentUser.isEmailVerified();
             if (currentUser.isEmailVerified()){
                 Intent intent = new Intent(AuthActivity.this, MainActivity.class);
                 startActivity(intent);
                 this.finish();
             }else {
-                mRelat_sign_in.setVisibility(View.GONE);
-                mRelat_verify.setVisibility(View.VISIBLE);
+                mRelate_sign_in.setVisibility(View.GONE);
+                mRelate_verify.setVisibility(View.VISIBLE);
             }
         }
+    }
+
+    private void sendEmailVerification() {
+        // Disable button
+        mVerify.setEnabled(false);
+
+        // Send verification email
+        // [START send_email_verification]
+        final FirebaseUser user = mAuth.getCurrentUser();
+        user.sendEmailVerification()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // [START_EXCLUDE]
+                        // Re-enable button
+                        mVerify.setEnabled(true);
+
+                        if (task.isSuccessful()) {
+                            Toast.makeText(AuthActivity.this,
+                                    "Verification email sent to " + user.getEmail(),
+                                    Toast.LENGTH_SHORT).show();
+                            mVerify_detail.setText(getString(R.string.ver_message_verify_send_to));
+                        } else {
+                            Log.e(TAG, "sendEmailVerification", task.getException());
+                            Toast.makeText(AuthActivity.this,
+                                    "Failed to send verification email.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                        // [END_EXCLUDE]
+                    }
+                });
+        // [END send_email_verification]
     }
 
     private void signIn(String email, String password) {
@@ -196,9 +260,8 @@ public class AuthActivity extends AppCompatActivity implements
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
             } else {
-                // Google Sign In failed, update UI appropriately
-                // [START_EXCLUDE]
-                // [END_EXCLUDE]
+                mMessage.setText(getString(R.string.err_message_something_wrong));
+                mMessage.setVisibility(View.VISIBLE);
             }
         }
     }
@@ -217,7 +280,7 @@ public class AuthActivity extends AppCompatActivity implements
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
-                            openMain();
+                            reStartApp();
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
@@ -258,12 +321,6 @@ public class AuthActivity extends AppCompatActivity implements
                 }
             },2000);
         }
-    }
-
-    private void openMain(){
-        Intent intent = new Intent(AuthActivity.this, MainActivity.class);
-        startActivity(intent);
-        activity.finish();
     }
 
     @Override

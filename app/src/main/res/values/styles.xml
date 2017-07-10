@@ -37,4 +37,18 @@
         <item name="android:textColor">@android:color/white</item>
     </style>
 
+    <style name="ThemeOverlay.MyWarnButton" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="colorButtonNormal">@color/color_yellow</item>
+        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="ThemeOverlay.MyDangerousButton" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="colorButtonNormal">@color/color_pastel_red</item>
+        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
 </resources>

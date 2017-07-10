@@ -36,7 +36,9 @@
     <color name="white_overlay">#66FFFFFF</color>
     <color name="white_light_overlay">#33FFFFFF</color>
     <color name="white_transparent">#11FFFFFF</color>
-    <color name="white_alpha">#20FFFFFF</color>
+    <color name="white_alpha">#25FFFFFF</color>
+    <color name="white_mid_alpha">#50FFFFFF</color>
+    <color name="white_huge_alpha">#75FFFFFF</color>
     <color name="gray_overlay">#FF888888</color>
 
     <color name="color_pastel_blue_sky">#4793ff</color>

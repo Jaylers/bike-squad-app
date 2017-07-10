@@ -4,15 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/linear_auth_base"
-    android:background="@color/colorAccent"
+    android:background="@drawable/img_bike_background"
     android:alpha="0.9"
-    tools:context="com.jaylerrs.bikesquad.auth.views.AuthActivity"
+    tools:context="com.jaylerrs.bikesquad.auth.AuthActivity"
     android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/relate_auth_verify"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white_mid_alpha"
         android:visibility="gone">
 
         <ImageView
@@ -35,7 +36,7 @@
             android:layout_below="@+id/txt_verify_title"
             android:text="@string/ver_message_detail"
             android:padding="20dp"
-            android:textSize="20sp"
+            android:textSize="17sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -71,6 +72,7 @@
         android:id="@+id/relat_auth_sign_in"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white_huge_alpha"
         android:orientation="vertical">
         <ImageView
             android:id="@+id/img_sign_in_logo"
@@ -92,6 +94,7 @@
         <ImageView
             android:id="@+id/img_google_logo"
             android:layout_below="@+id/txt_sign_in_title"
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/img_google"/>
