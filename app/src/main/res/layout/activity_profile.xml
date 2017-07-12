@@ -72,9 +72,8 @@
         android:layout_height="60dp"
         android:layout_toEndOf="@+id/txt_profile_back"
         android:text="@string/ver_message_log_out"
-        android:theme="@style/ThemeOverlay.MyWarnButton"
-        android:visibility="gone"
-        android:textColor="@color/color_pastel_red"/>
+        android:theme="@style/ThemeOverlay.MyDangerousButton"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/btn_profile_advance_edit_account"

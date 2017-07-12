@@ -97,9 +97,10 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
                     .alpha(0.0f)
                     .setDuration(800);
 
-            mDeleteAccount.setVisibility(View.GONE);
-            mLogOut.setVisibility(View.GONE);
             mEditAccount.setVisibility(View.GONE);
+            mLogOut.setVisibility(View.GONE);
+//            mDeleteAccount.setVisibility(View.GONE);
+
         }else {
             mAdvanceOption.setText(getString(R.string.app_message_cancel));
             mDeleteAccount.animate()
@@ -112,9 +113,9 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
                     .alpha(1.0f)
                     .setDuration(400);
 
-            mLogOut.setVisibility(View.VISIBLE);
-            mDeleteAccount.setVisibility(View.VISIBLE);
             mEditAccount.setVisibility(View.VISIBLE);
+            mLogOut.setVisibility(View.VISIBLE);
+//            mDeleteAccount.setVisibility(View.VISIBLE);
         }
     }
 
