@@ -41,6 +41,7 @@
     <string name="message_close">Close</string>
     <string name="message_retry">Retry</string>
     <string name="app_message_ok">OK</string>
+    <string name="app_message_confirm">Confirm</string>
     <string name="app_message_cancel">Cancel</string>
     <string name="app_message_send_an_email">Send an email</string>
     <string name="app_message_request_permission_call">Please allow us to make a Call</string>
@@ -91,5 +92,14 @@
         if you want to change any information you can directly change as your Google email.</string>
     <string name="profile_message_advance_opt">Advance option</string>
     <string name="profile_message_delete_account">Delete account</string>
+    <string name="profile_message_edit_account">Edit account</string>
+    <string name="profile_message_prompt_delete_title">Confirm to delete your account</string>
+    <string name="profile_message_prompt_delete">Delete an account that mean the your account is
+        permanently deleted and can not be back.</string>
+    <string name="profile_message_prompt_require_pass_for_delete">To confirm that, please type your
+        email password to delete your Bike Squad\'s account</string>
+    <string name="profile_message_password">Password</string>
+    <string name="profile_message_cry_of_delete">We are very sad that for your decision to leave us.
+        However, you can always come back to restart with us.</string>
 
 </resources>

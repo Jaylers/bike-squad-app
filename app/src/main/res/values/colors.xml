@@ -50,5 +50,8 @@
     <color name="color_pastel_red">#FF5747</color>
     <color name="color_pastel_orange">#FFB347</color>
     <color name="color_pastel_yellow">#EFFF47</color>
+    <color name="color_pastel_green">#4ED34E</color>
+
+    <color name="color_pastel_orange_alpha">#70FFB347</color>
 
 </resources>
