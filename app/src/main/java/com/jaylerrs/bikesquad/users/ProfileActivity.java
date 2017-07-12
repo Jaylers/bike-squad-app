@@ -21,6 +21,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.jaylerrs.bikesquad.R;
 import com.jaylerrs.bikesquad.auth.AuthActivity;
+import com.jaylerrs.bikesquad.users.task.DeleteAccount;
+import com.jaylerrs.bikesquad.utility.dialog.DialogDeleteAccountMessage;
 import com.jaylerrs.bikesquad.utility.dialog.DialogLoading;
 
 import butterknife.BindView;
@@ -36,6 +38,7 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
     @BindView(R.id.btn_profile_advance_log_out) Button mLogOut;
     @BindView(R.id.btn_profile_advance_delete_account) Button mDeleteAccount;
     @BindView(R.id.btn_profile_advance_option) Button mAdvanceOption;
+    @BindView(R.id.btn_profile_advance_edit_account) Button mEditAccount;
 
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
@@ -89,9 +92,14 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
                     .setDuration(400);
             mLogOut.animate()
                     .alpha(0.0f)
-                    .setDuration(700);
+                    .setDuration(600);
+            mEditAccount.animate()
+                    .alpha(0.0f)
+                    .setDuration(800);
+
             mDeleteAccount.setVisibility(View.GONE);
             mLogOut.setVisibility(View.GONE);
+            mEditAccount.setVisibility(View.GONE);
         }else {
             mAdvanceOption.setText(getString(R.string.app_message_cancel));
             mDeleteAccount.animate()
@@ -99,9 +107,14 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
                     .setDuration(700);
             mLogOut.animate()
                     .alpha(1.0f)
+                    .setDuration(600);
+            mEditAccount.animate()
+                    .alpha(1.0f)
                     .setDuration(400);
+
             mLogOut.setVisibility(View.VISIBLE);
             mDeleteAccount.setVisibility(View.VISIBLE);
+            mEditAccount.setVisibility(View.VISIBLE);
         }
     }
 
@@ -114,7 +127,8 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
     }
 
     @OnClick(R.id.btn_profile_advance_delete_account) public void OnDeleteAccount(){
-
+        DialogEditor dialogEditor = new DialogEditor(activity, getString(R.string.profile_message_prompt_delete));
+        dialogEditor.show();
     }
 
     private void revokeAccess() {
@@ -147,4 +161,24 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
             super(activity, message);
         }
     }
+
+    private class DialogEditor extends DialogDeleteAccountMessage {
+
+        public DialogEditor(Activity activity, String message) {
+            super(activity, message);
+        }
+
+        @Override
+        public void onSubmit() {
+            DeleteAccount deleteAccount = new DeleteAccount(activity);
+            deleteAccount.reAuth(getPassword());
+        }
+
+        @Override
+        public void onCancel() {
+            super.onCancel();
+        }
+    }
+
+//    public class DialogGetMessage
 }
