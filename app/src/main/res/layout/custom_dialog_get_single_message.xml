@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/dialog_base_style"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/txt_message_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/content_margin"
+            android:padding="@dimen/content_padding"
+            android:text="@string/profile_message_prompt_delete_title"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/txt_message_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_margin"
+            android:padding="@dimen/content_padding"
+            android:textColor="@android:color/black"
+            android:text="@string/profile_message_prompt_require_pass_for_delete"/>
+
+
+        <EditText
+            android:id="@+id/edt_delete_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:padding="10dp"
+            android:inputType="textPassword"
+            android:hint="@string/profile_message_password"
+            style="@style/button_round_style"/>
+
+        <TextView
+            android:id="@+id/txt_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/content_margin"
+            android:layout_marginEnd="@dimen/content_margin"
+            android:layout_marginBottom="@dimen/content_margin"
+            android:padding="@dimen/content_padding"
+            android:text="@string/profile_message_prompt_delete" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            style="@style/dialog_base_style"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_ok"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_bottom_left_round"
+                android:clickable="true"
+                android:text="@string/app_message_confirm"
+                android:textColor="@color/color_white"
+                android:layout_weight="1"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_no"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_bottom_right_round"
+                android:clickable="true"
+                android:layout_weight="1"
+                android:text="@string/app_message_cancel"
+                android:textColor="@color/color_white"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
