@@ -24,6 +24,8 @@ import com.jaylerrs.bikesquad.auth.AuthActivity;
 import com.jaylerrs.bikesquad.users.task.DeleteAccount;
 import com.jaylerrs.bikesquad.utility.dialog.DialogDeleteAccountMessage;
 import com.jaylerrs.bikesquad.utility.dialog.DialogLoading;
+import com.jaylerrs.bikesquad.utility.dialog.DialogLogOutConfirm;
+import com.jaylerrs.bikesquad.utility.dialog.DialogMessages;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -124,7 +126,8 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
     }
 
     @OnClick(R.id.btn_profile_advance_log_out) public void onLogOut(){
-        revokeAccess();
+        DialogLogout dialogLogout = new DialogLogout(activity);
+        dialogLogout.show();
     }
 
     @OnClick(R.id.btn_profile_advance_delete_account) public void OnDeleteAccount(){
@@ -178,6 +181,35 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
         @Override
         public void onCancel() {
             super.onCancel();
+        }
+    }
+
+    private class DialogLogout extends DialogLogOutConfirm {
+
+        public DialogLogout(Activity activity) {
+            super(activity);
+        }
+
+        @Override
+        public void onSubmit() {
+            DialogMessage dialogMessage = new DialogMessage(activity,
+                    activity.getString(R.string.sign_out_message_title),
+                    activity.getString(R.string.sign_out_message_ask_back));
+            dismiss();
+            dialogMessage.show();
+        }
+    }
+
+    public class DialogMessage extends DialogMessages {
+
+        public DialogMessage(Activity activity, String title, String message) {
+            super(activity, title, message);
+        }
+
+        @Override
+        public void onClick(View v) {
+            dismiss();
+            revokeAccess();
         }
     }
 

@@ -102,4 +102,10 @@
     <string name="profile_message_cry_of_delete">We are very sad that for your decision to leave us.
         However, you can always come back to restart with us.</string>
 
+    //Log out
+    <string name="sign_out_message_title">Log out confirmation</string>
+    <string name="sign_out_message_tip">Remember, You can stay signed in away as long as you using this device.</string>
+    <string name="sign_out_message_crying">Are you sure to LOG OUT? We will regret without you.</string>
+    <string name="sign_out_message_ask_back">Please back. We will waiting for you.</string>
+
 </resources>
