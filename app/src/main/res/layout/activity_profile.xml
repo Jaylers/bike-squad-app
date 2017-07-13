@@ -45,7 +45,181 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="@dimen/layout_value_10"
         android:text="@string/profile_message_detail"/>
+
+    <TextView
+        android:id="@+id/txt_profile_phone"
+        android:layout_below="@id/txt_profile_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:paddingTop="@dimen/content_padding"
+        android:paddingBottom="@dimen/content_padding"
+        android:paddingStart="50dp"
+        android:text="@string/profile_message_phone_number"/>
+
+    <TextView
+        android:id="@+id/txt_profile_phone_value"
+        android:layout_below="@id/txt_profile_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="50dp"
+        android:paddingTop="@dimen/content_padding"
+        android:paddingBottom="@dimen/content_padding"
+        android:paddingStart="@dimen/content_padding"
+        android:text="@string/profile_message_phone_number"/>
+
+    <TextView
+        android:id="@+id/txt_profile_birth_date"
+        android:layout_below="@id/txt_profile_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:paddingTop="@dimen/content_padding"
+        android:paddingBottom="@dimen/content_padding"
+        android:paddingStart="50dp"
+        android:text="@string/profile_message_birth_date"/>
+
+    <TextView
+        android:id="@+id/txt_profile_birth_date_value"
+        android:layout_below="@id/txt_profile_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="50dp"
+        android:paddingTop="@dimen/content_padding"
+        android:paddingBottom="@dimen/content_padding"
+        android:paddingStart="@dimen/content_padding"
+        android:text="@string/profile_message_birth_date"/>
+
+    <EditText
+        android:id="@+id/edt_profile_birth_date_value"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:padding="5dp"
+        android:paddingTop="@dimen/content_padding"
+        android:paddingBottom="@dimen/content_padding"
+        android:paddingStart="@dimen/content_padding"
+        style="@style/button_square_style"
+        android:hint="@string/profile_message_birth_date"
+        android:layout_below="@+id/txt_profile_phone"
+        android:layout_alignStart="@+id/edt_profile_weight_value"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/txt_profile_weight"
+        android:layout_below="@id/txt_profile_birth_date"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:paddingTop="@dimen/content_padding"
+        android:paddingBottom="@dimen/content_padding"
+        android:paddingStart="50dp"
+        android:text="@string/profile_message_weight"/>
+
+    <TextView
+        android:id="@+id/txt_profile_weight_value"
+        android:layout_below="@id/txt_profile_birth_date"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:layout_alignParentEnd="true"
+        android:paddingTop="@dimen/content_padding"
+        android:paddingBottom="@dimen/content_padding"
+        android:paddingEnd="50dp"
+        android:text="@string/profile_message_weight"/>
+
+    <EditText
+        android:id="@+id/edt_profile_weight_value"
+        android:layout_below="@id/txt_profile_birth_date"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/txt_profile_birth_date"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="20dp"
+        android:padding="5dp"
+        android:paddingTop="@dimen/content_padding"
+        android:paddingBottom="@dimen/content_padding"
+        android:paddingStart="@dimen/content_padding"
+        style="@style/button_square_style"
+        android:hint="@string/profile_message_weight"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/txt_profile_height"
+        android:layout_below="@id/txt_profile_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:paddingTop="@dimen/content_padding"
+        android:paddingBottom="@dimen/content_padding"
+        android:paddingStart="50dp"
+        android:text="@string/profile_message_height"/>
+
+    <TextView
+        android:id="@+id/txt_profile_height_value"
+        android:layout_below="@id/txt_profile_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:layout_alignParentEnd="true"
+        android:paddingTop="@dimen/content_padding"
+        android:paddingBottom="@dimen/content_padding"
+        android:paddingEnd="50dp"
+        android:text="@string/profile_message_height"/>
+
+    <EditText
+        android:id="@+id/edt_profile_height_value"
+        android:layout_below="@id/txt_profile_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/txt_profile_birth_date"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="20dp"
+        android:padding="5dp"
+        android:paddingTop="@dimen/content_padding"
+        android:paddingBottom="@dimen/content_padding"
+        android:paddingStart="@dimen/content_padding"
+        style="@style/button_square_style"
+        android:visibility="gone"
+        android:hint="@string/profile_message_height"/>
+
+    <TextView
+        android:id="@+id/txt_profile_privacy"
+        android:layout_below="@id/txt_profile_height"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:paddingStart="50dp"
+        android:paddingTop="@dimen/content_padding"
+        android:paddingBottom="@dimen/content_padding"
+        android:paddingEnd="50dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/profile_message_privacy"/>
+
+    <Switch
+        android:id="@+id/swt_profile_privacy_value"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="50dp"
+        android:clickable="false"
+        android:layout_below="@id/txt_profile_height"/>
+
+    <Switch
+        android:id="@+id/swt_profile_privacy_edt"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="50dp"
+        android:visibility="gone"
+        android:layout_below="@id/txt_profile_height"/>
 
     <TextView
         android:id="@+id/txt_profile_back"
@@ -56,6 +230,29 @@
         android:paddingEnd="40dp"
         android:gravity="center_vertical"
         android:text="@string/message_back"/>
+
+    <Button
+        android:id="@+id/edt_profile_save"
+        android:layout_below="@+id/txt_profile_privacy"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="@string/profile_message_save"
+        android:visibility="gone"
+        android:layout_alignParentStart="true"
+        android:theme="@style/ThemeOverlay.MyGreenButton"/>
+    <Button
+        android:id="@+id/edt_profile_cancel"
+        android:layout_below="@+id/txt_profile_privacy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/edt_profile_save"
+        android:text="@string/app_message_cancel"
+        android:visibility="gone"
+        android:layout_alignParentEnd="true"
+        android:theme="@style/ThemeOverlay.MyDangerousButton"/>
+
     <Button
         android:id="@+id/btn_profile_advance_option"
         android:layout_width="match_parent"

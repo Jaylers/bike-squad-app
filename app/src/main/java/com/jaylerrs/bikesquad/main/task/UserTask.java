@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.jaylerrs.bikesquad.R;
@@ -20,7 +21,7 @@ public class UserTask{
     private ImageView mImageProfile;
     private TextView mName;
     private TextView mEmail;
-    FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
 
     public UserTask(View mHeaderLayout, Activity activity) {
@@ -36,5 +37,12 @@ public class UserTask{
     public void setUserProfile(){
         mName.setText(currentUser.getDisplayName());
         mEmail.setText(currentUser.getEmail());
+        Glide.with(activity)
+                .load(currentUser.getPhotoUrl())
+                .fitCenter()
+                .animate(R.anim.fade_in)
+                .placeholder(R.drawable.img_users)
+                .error(R.drawable.ic_img_error)
+                .into(mImageProfile);
     }
 }

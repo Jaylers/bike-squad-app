@@ -88,8 +88,16 @@
     <string name="menu_main_setting">Settings</string>
 
     //Profile
+    <string name="profile_message_weight">Weight</string>
+    <string name="profile_message_height">Height</string>
+    <string name="profile_message_privacy">Private account</string>
+    <string name="profile_message_birth_date">Birth date</string>
+    <string name="profile_message_phone_number">Phone number</string>
+    <string name="profile_message_public">Public</string>
+    <string name="profile_message_private">Private</string>
+    <string name="profile_message_save">Save</string>
     <string name="profile_message_detail">   The user information is follow by your email information
-        if you want to change any information you can directly change as your Google email.</string>
+        if you want to change any information above you can directly change as your Google email.</string>
     <string name="profile_message_advance_opt">Advance option</string>
     <string name="profile_message_delete_account">Delete account</string>
     <string name="profile_message_edit_account">Edit account</string>
@@ -101,6 +109,8 @@
     <string name="profile_message_password">Password</string>
     <string name="profile_message_cry_of_delete">We are very sad that for your decision to leave us.
         However, you can always come back to restart with us.</string>
+    <string name="profile_message_edit_user_title">Edit User Information</string>
+    <string name="profile_message_edit_user_result">Your information had edited successfully</string>
 
     //Log out
     <string name="sign_out_message_title">Log out confirmation</string>

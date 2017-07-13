@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.jaylerrs.bikesquad.R;
 import com.jaylerrs.bikesquad.auth.AuthActivity;
 import com.jaylerrs.bikesquad.users.task.DeleteAccount;
+import com.jaylerrs.bikesquad.users.task.UserInformation;
 import com.jaylerrs.bikesquad.utility.dialog.DialogDeleteAccountMessage;
 import com.jaylerrs.bikesquad.utility.dialog.DialogLoading;
 import com.jaylerrs.bikesquad.utility.dialog.DialogLogOutConfirm;
@@ -47,6 +48,7 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
     private Activity activity;
     private GoogleApiClient mGoogleApiClient;
     private Progressing progressing;
+    private UserInformation userInformation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +69,8 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
+        userInformation = new UserInformation(activity);
+
         setUserInformation();
     }
 
@@ -84,45 +88,59 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
         mProfileName.setText(currentUser.getDisplayName());
         mProfileEmail.setText(currentUser.getEmail());
         mProfilePhoneNumber.setText(currentUser.getPhoneNumber());
+
+        userInformation.displayInformation();
     }
 
     @OnClick(R.id.btn_profile_advance_option) public void onAdvanceOption(){
         if(mAdvanceOption.getText().toString().equals(getString(R.string.app_message_cancel))){
-            mAdvanceOption.setText(getString(R.string.profile_message_advance_opt));
-            mDeleteAccount.animate()
-                    .alpha(0.0f)
-                    .setDuration(400);
-            mLogOut.animate()
-                    .alpha(0.0f)
-                    .setDuration(600);
-            mEditAccount.animate()
-                    .alpha(0.0f)
-                    .setDuration(800);
-
-            mEditAccount.setVisibility(View.GONE);
-            mLogOut.setVisibility(View.GONE);
-//            mDeleteAccount.setVisibility(View.GONE);
-
+            hideOption();
         }else {
-            mAdvanceOption.setText(getString(R.string.app_message_cancel));
-            mDeleteAccount.animate()
-                    .alpha(1.0f)
-                    .setDuration(700);
-            mLogOut.animate()
-                    .alpha(1.0f)
-                    .setDuration(600);
-            mEditAccount.animate()
-                    .alpha(1.0f)
-                    .setDuration(400);
-
-            mEditAccount.setVisibility(View.VISIBLE);
-            mLogOut.setVisibility(View.VISIBLE);
-//            mDeleteAccount.setVisibility(View.VISIBLE);
+            displayOption();
         }
+    }
+
+    private void hideOption(){
+        mAdvanceOption.setText(getString(R.string.profile_message_advance_opt));
+        mDeleteAccount.animate()
+                .alpha(0.0f)
+                .setDuration(400);
+        mLogOut.animate()
+                .alpha(0.0f)
+                .setDuration(600);
+        mEditAccount.animate()
+                .alpha(0.0f)
+                .setDuration(800);
+
+        mEditAccount.setVisibility(View.GONE);
+        mLogOut.setVisibility(View.GONE);
+//            mDeleteAccount.setVisibility(View.GONE);
+    }
+
+    private void displayOption(){
+        mAdvanceOption.setText(getString(R.string.app_message_cancel));
+        mDeleteAccount.animate()
+                .alpha(1.0f)
+                .setDuration(700);
+        mLogOut.animate()
+                .alpha(1.0f)
+                .setDuration(600);
+        mEditAccount.animate()
+                .alpha(1.0f)
+                .setDuration(400);
+
+        mEditAccount.setVisibility(View.VISIBLE);
+        mLogOut.setVisibility(View.VISIBLE);
+//            mDeleteAccount.setVisibility(View.VISIBLE);
     }
 
     @OnClick(R.id.txt_profile_back) public void onBack(){
         this.finish();
+    }
+
+    @OnClick(R.id.btn_profile_advance_edit_account) public void onEdit(){
+        hideOption();
+        userInformation.enableEditor();
     }
 
     @OnClick(R.id.btn_profile_advance_log_out) public void onLogOut(){
@@ -133,6 +151,20 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
     @OnClick(R.id.btn_profile_advance_delete_account) public void OnDeleteAccount(){
         DialogEditor dialogEditor = new DialogEditor(activity, getString(R.string.profile_message_prompt_delete));
         dialogEditor.show();
+    }
+
+    @OnClick(R.id.edt_profile_save) public void onSave(){
+        userInformation.setUserInformation();
+        userInformation.disableEditor();
+        DialogMessage dialogMessage = new DialogMessage(activity,
+                getString(R.string.profile_message_edit_user_title),
+                getString(R.string.profile_message_edit_user_result));
+        dialogMessage.show();
+        userInformation.displayInformation();
+    }
+
+    @OnClick(R.id.edt_profile_cancel) public void onCancel(){
+        userInformation.disableEditor();
     }
 
     private void revokeAccess() {
@@ -192,11 +224,24 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
 
         @Override
         public void onSubmit() {
-            DialogMessage dialogMessage = new DialogMessage(activity,
+            DialogRevokeMessage dialogRevokeMessage = new DialogRevokeMessage(activity,
                     activity.getString(R.string.sign_out_message_title),
                     activity.getString(R.string.sign_out_message_ask_back));
             dismiss();
-            dialogMessage.show();
+            dialogRevokeMessage.show();
+        }
+    }
+
+    public class DialogRevokeMessage extends DialogMessages {
+
+        public DialogRevokeMessage(Activity activity, String title, String message) {
+            super(activity, title, message);
+        }
+
+        @Override
+        public void onClick(View v) {
+            dismiss();
+            revokeAccess();
         }
     }
 
@@ -209,7 +254,6 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
         @Override
         public void onClick(View v) {
             dismiss();
-            revokeAccess();
         }
     }
 

@@ -30,11 +30,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.jaylerrs.bikesquad.R;
 import com.jaylerrs.bikesquad.main.MainActivity;
 import com.jaylerrs.bikesquad.utility.dialog.DialogLoading;
 import com.jaylerrs.bikesquad.utility.manager.ConnectionsManager;
 import com.jaylerrs.bikesquad.utility.manager.LanguageManager;
+import com.jaylerrs.bikesquad.utility.sharedstring.SharedRef;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -61,6 +64,7 @@ public class AuthActivity extends AppCompatActivity implements
     private FirebaseAuth mAuth;
     private GoogleApiClient mGoogleApiClient;
     private FirebaseUser currentUser;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -280,6 +284,7 @@ public class AuthActivity extends AppCompatActivity implements
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
+                            addUserInfomation();
                             reStartApp();
                         } else {
                             // If sign in fails, display a message to the user.
@@ -296,6 +301,18 @@ public class AuthActivity extends AppCompatActivity implements
                 });
     }
     // [END auth_with_google]
+
+    private void addUserInfomation(){
+        currentUser = mAuth.getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child(SharedRef.ref_user);
+        DatabaseReference userinfo = databaseReference.child(currentUser.getUid());
+
+        userinfo.child(SharedRef.ref_user).setValue(currentUser.getUid());
+        userinfo.child("birthDate").setValue("000000");
+        userinfo.child("weight").setValue("0");
+        userinfo.child("height").setValue("0");
+        userinfo.child("privacy").setValue("false");
+    }
 
     private int confirm = 0;
     @Override
