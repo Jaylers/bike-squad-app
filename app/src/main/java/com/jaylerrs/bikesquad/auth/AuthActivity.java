@@ -30,8 +30,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.jaylerrs.bikesquad.R;
 import com.jaylerrs.bikesquad.main.MainActivity;
 import com.jaylerrs.bikesquad.utility.dialog.DialogLoading;
@@ -284,7 +287,7 @@ public class AuthActivity extends AppCompatActivity implements
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
-                            addUserInfomation();
+                            addUserInformation();
                             reStartApp();
                         } else {
                             // If sign in fails, display a message to the user.
@@ -302,16 +305,42 @@ public class AuthActivity extends AppCompatActivity implements
     }
     // [END auth_with_google]
 
-    private void addUserInfomation(){
+    private void addUserInformation(){
         currentUser = mAuth.getCurrentUser();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child(SharedRef.ref_user);
-        DatabaseReference userinfo = databaseReference.child(currentUser.getUid());
+        final String[] username = currentUser.getEmail().toString().split("@");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child(SharedRef.ref_user)
+                .child(currentUser.getUid());
 
-        userinfo.child(SharedRef.ref_user).setValue(currentUser.getUid());
-        userinfo.child("birthDate").setValue("000000");
-        userinfo.child("weight").setValue("0");
-        userinfo.child("height").setValue("0");
-        userinfo.child("privacy").setValue("false");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if (!(dataSnapshot.child("username").getValue() == null)){
+                    Toast.makeText(AuthActivity.this,
+                            "Welcome back.",
+                            Toast.LENGTH_SHORT).show();
+                }else {
+                    databaseReference.child(SharedRef.ref_user).setValue(currentUser.getUid());
+                    databaseReference.child("username").setValue(username[0]);
+                    databaseReference.child("birthDate").setValue("010101");
+                    databaseReference.child("weight").setValue("0");
+                    databaseReference.child("height").setValue("0");
+                    databaseReference.child("privacy").setValue("false");
+
+                    Toast.makeText(AuthActivity.this,
+                            "Welcome to Bike Squad.",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w("Get USER", "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
+        });
+
     }
 
     private int confirm = 0;

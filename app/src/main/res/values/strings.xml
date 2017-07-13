@@ -78,6 +78,7 @@
     <string name="btn_send">Send</string>
     <string name="btn_remove">Remove</string>
     <string name="btn_log_out">Log Out</string>
+    <string name="auth_message_welcome_back">Welcome back.</string>
 
     //Menu
     <string name="menu_main_profile">Profile</string>
@@ -86,6 +87,10 @@
     <string name="menu_main_route">Route</string>
     <string name="menu_main_Bike">Biking</string>
     <string name="menu_main_setting">Settings</string>
+
+    <string name="heading_recent">Recent</string>
+    <string name="heading_my_posts">My Posts</string>
+    <string name="heading_my_top_posts">My Top Posts</string>
 
     //Profile
     <string name="profile_message_weight">Weight</string>
@@ -111,6 +116,9 @@
         However, you can always come back to restart with us.</string>
     <string name="profile_message_edit_user_title">Edit User Information</string>
     <string name="profile_message_edit_user_result">Your information had edited successfully</string>
+
+    //post
+    <string name="post_message_write">Write your post &#8320; &#8320; &#8320;</string>
 
     //Log out
     <string name="sign_out_message_title">Log out confirmation</string>

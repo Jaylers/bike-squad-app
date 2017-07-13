@@ -5,5 +5,5 @@ package com.jaylerrs.bikesquad.utility.sharedstring;
  */
 
 public class SharedRef {
-    public static String ref_user =                  "users";
+    public static String ref_user =                  "userdata";
 }

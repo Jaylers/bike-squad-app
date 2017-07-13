@@ -6,6 +6,7 @@ package com.jaylerrs.bikesquad.users.model;
 
 public class UserInfo {
     String email;
+    String username;
     String birthDate;
     String weight;
     String height;
@@ -14,8 +15,9 @@ public class UserInfo {
     public UserInfo() {
     }
 
-    public UserInfo(String email, String birthDate, String weight, String height, Boolean privacy) {
+    public UserInfo(String email, String username, String birthDate, String weight, String height, Boolean privacy) {
         this.email = email;
+        this.username = username;
         this.birthDate = birthDate;
         this.weight = weight;
         this.height = height;
@@ -60,5 +62,13 @@ public class UserInfo {
 
     public void setPrivacy(Boolean privacy) {
         this.privacy = privacy;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

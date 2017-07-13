@@ -33,6 +33,13 @@
 
         <activity android:name=".users.ProfileActivity"
             android:screenOrientation="portrait"/>
+
+        <activity android:name=".main.NewPostActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".main.PostDetailActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>

@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jaylerrs.bikesquad.R;
+import com.jaylerrs.bikesquad.users.model.UserInfo;
 import com.jaylerrs.bikesquad.utility.sharedstring.SharedRef;
 
 /**
@@ -65,6 +66,11 @@ public class UserInformation {
         mEdtCancel = (Button) activity.findViewById(R.id.edt_profile_cancel);
     }
 
+    public UserInformation() {
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+    }
+
     public void displayInformation(){
         databaseReference = FirebaseDatabase.getInstance().getReference()
                 .child(SharedRef.ref_user).child(currentUser.getUid());
@@ -80,6 +86,29 @@ public class UserInformation {
                 mTxtWeight.setText(dataSnapshot.child("weight").getValue().toString());
                 mTxtHeight.setText(dataSnapshot.child("height").getValue().toString());
                 mSwtPrivacy.setChecked(dataSnapshot.child("privacy").getValue().toString().equals("true"));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w("Get USER", "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
+        });
+    }
+
+    public void getInformation(){
+        databaseReference = FirebaseDatabase.getInstance().getReference()
+                .child(SharedRef.ref_user).child(currentUser.getUid());
+        databaseReference.keepSynced(false);
+        final UserInfo userInfo = new UserInfo();
+        final String[] username = {null};
+
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                userInfo.setEmail(currentUser.getEmail());
+                username[0] = dataSnapshot.child("username").getValue().toString();
             }
 
             @Override

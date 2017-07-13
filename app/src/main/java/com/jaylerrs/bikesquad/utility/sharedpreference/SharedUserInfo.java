@@ -11,12 +11,12 @@ import com.jaylerrs.bikesquad.utility.sharedstring.SharedKey;
  * Created by jaylerr on 03-Jun-17.
  */
 
-public class SharedSignedUser {
+public class SharedUserInfo {
     Activity activity;
     private SharedPreferences account;
     private SharedPreferences.Editor editor;
 
-    public SharedSignedUser(Activity activity) {
+    public SharedUserInfo(Activity activity) {
         this.activity = activity;
         account = activity.getSharedPreferences(SharedKey.key_sign_in, Context.MODE_PRIVATE);
         editor = account.edit();

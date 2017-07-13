@@ -21,7 +21,7 @@ public class ApplicationManager {
     }
 
     public void signOut(){
-//        SharedSignedUser sharedSignedUser = new SharedSignedUser(activity);
+//        SharedUserInfo sharedSignedUser = new SharedUserInfo(activity);
 //        sharedSignedUser.setStateSignIn(SharedFlag.flag_unknown);
 //        Intent intent = new Intent(activity, AuthActivity.class);
 //        activity.startActivity(intent);
