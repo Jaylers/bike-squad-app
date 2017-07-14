@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_pastel_orange_alpha"
+    android:background="@drawable/img_auth_background"
     tools:context=".main.MainActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/messages_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white_overlay"
         android:layout_alignParentTop="true"
         android:clipToPadding="false"
         android:padding="5dp"
