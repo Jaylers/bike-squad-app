@@ -42,7 +42,7 @@ public class UserTask{
                 .fitCenter()
                 .animate(R.anim.fade_in)
                 .placeholder(R.drawable.img_users)
-                .error(R.drawable.ic_img_error)
+                .error(R.drawable.img_users)
                 .into(mImageProfile);
     }
 }

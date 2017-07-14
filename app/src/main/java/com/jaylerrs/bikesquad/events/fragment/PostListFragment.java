@@ -23,6 +23,7 @@ import com.jaylerrs.bikesquad.R;
 import com.jaylerrs.bikesquad.events.PostDetailActivity;
 import com.jaylerrs.bikesquad.events.models.Post;
 import com.jaylerrs.bikesquad.events.viewholder.PostViewHolder;
+import com.jaylerrs.bikesquad.utility.sharedstring.FirebaseTag;
 
 public abstract class PostListFragment extends Fragment {
 
@@ -96,8 +97,8 @@ public abstract class PostListFragment extends Fragment {
                     @Override
                     public void onClick(View starView) {
                         // Need to write to both places the post is stored
-                        DatabaseReference globalPostRef = mDatabase.child("posts").child(postRef.getKey());
-                        DatabaseReference userPostRef = mDatabase.child("user-posts").child(model.uid).child(postRef.getKey());
+                        DatabaseReference globalPostRef = mDatabase.child(FirebaseTag.post).child(postRef.getKey());
+                        DatabaseReference userPostRef = mDatabase.child(FirebaseTag.user_post).child(model.uid).child(postRef.getKey());
 
                         // Run two transactions
                         onStarClicked(globalPostRef);
@@ -120,7 +121,7 @@ public abstract class PostListFragment extends Fragment {
                 }
 
                 if (p.stars.containsKey(getUid())) {
-                    // Unstar the post and remove self from stars
+                    // Un star the post and remove self from stars
                     p.starCount = p.starCount - 1;
                     p.stars.remove(getUid());
                 } else {
