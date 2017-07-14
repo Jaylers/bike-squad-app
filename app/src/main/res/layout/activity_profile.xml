@@ -31,7 +31,7 @@
         android:gravity="center_vertical"
         android:text="@string/app_name"/>
     <TextView
-        android:id="@+id/txt_profile_phone_number"
+        android:id="@+id/txt_profile_public_key"
         android:layout_below="@id/txt_profile_email"
         android:layout_toEndOf="@+id/img_profile_image"
         android:layout_width="wrap_content"
@@ -57,10 +57,10 @@
         android:paddingTop="@dimen/content_padding"
         android:paddingBottom="@dimen/content_padding"
         android:paddingStart="50dp"
-        android:text="@string/profile_message_phone_number"/>
+        android:text="@string/profile_message_username"/>
 
     <TextView
-        android:id="@+id/txt_profile_phone_value"
+        android:id="@+id/txt_profile_username_value"
         android:layout_below="@id/txt_profile_detail"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
@@ -70,7 +70,7 @@
         android:paddingTop="@dimen/content_padding"
         android:paddingBottom="@dimen/content_padding"
         android:paddingStart="@dimen/content_padding"
-        android:text="@string/profile_message_phone_number"/>
+        android:text="@string/profile_message_username"/>
 
     <TextView
         android:id="@+id/txt_profile_birth_date"
@@ -103,9 +103,11 @@
         android:padding="5dp"
         android:paddingTop="@dimen/content_padding"
         android:paddingBottom="@dimen/content_padding"
+        android:layout_marginEnd="50dp"
         android:paddingStart="@dimen/content_padding"
         style="@style/button_square_style"
         android:hint="@string/profile_message_birth_date"
+        android:textAlignment="textEnd"
         android:layout_below="@+id/txt_profile_phone"
         android:layout_alignStart="@+id/edt_profile_weight_value"
         android:visibility="gone"/>
@@ -138,6 +140,7 @@
         android:layout_below="@id/txt_profile_birth_date"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
+        android:textAlignment="textEnd"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/txt_profile_birth_date"
         android:layout_marginEnd="50dp"
@@ -179,6 +182,7 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_alignParentEnd="true"
+        android:textAlignment="textEnd"
         android:layout_toEndOf="@+id/txt_profile_birth_date"
         android:layout_marginEnd="50dp"
         android:layout_marginStart="20dp"

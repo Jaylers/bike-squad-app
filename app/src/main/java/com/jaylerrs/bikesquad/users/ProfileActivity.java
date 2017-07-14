@@ -37,7 +37,7 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
     @BindView(R.id.img_profile_image) ImageView mProfileImage;
     @BindView(R.id.txt_profile_name) TextView mProfileName;
     @BindView(R.id.txt_profile_email) TextView mProfileEmail;
-    @BindView(R.id.txt_profile_phone_number) TextView mProfilePhoneNumber;
+    @BindView(R.id.txt_profile_public_key) TextView mProfilePhoneNumber;
     @BindView(R.id.btn_profile_advance_log_out) Button mLogOut;
     @BindView(R.id.btn_profile_advance_delete_account) Button mDeleteAccount;
     @BindView(R.id.btn_profile_advance_option) Button mAdvanceOption;
@@ -87,7 +87,8 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
 
         mProfileName.setText(currentUser.getDisplayName());
         mProfileEmail.setText(currentUser.getEmail());
-        mProfilePhoneNumber.setText(currentUser.getPhoneNumber());
+        mProfilePhoneNumber.setText(getString(R.string.profile_message_provider)
+                .concat(" : ".concat(currentUser.getProviders().toString())));
 
         userInformation.displayInformation();
     }

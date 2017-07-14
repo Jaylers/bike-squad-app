@@ -34,6 +34,7 @@
     <string name="err_message_not_email">Invalid email</string>
     <string name="err_message_something_wrong">Something wrong, try again..</string>
     <string name="err_message_connection_failure">Network connection error \n Please check your connection</string>
+    <string name="err_message_something_wrong_short">Something wrong</string>
 
     //Language
     <string name="language_thailand" translatable="false"> ภาษาไทย</string>
@@ -102,9 +103,11 @@
     <string name="profile_message_privacy">Private account</string>
     <string name="profile_message_birth_date">Birth date</string>
     <string name="profile_message_phone_number">Phone number</string>
+    <string name="profile_message_username">User name</string>
     <string name="profile_message_public">Public</string>
     <string name="profile_message_private">Private</string>
     <string name="profile_message_save">Save</string>
+    <string name="profile_message_provider">Provider</string>
     <string name="profile_message_detail">   The user information is follow by your email information
         if you want to change any information above you can directly change as your Google email.</string>
     <string name="profile_message_advance_opt">Advance option</string>

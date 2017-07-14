@@ -101,8 +101,8 @@ public class MainActivity extends AppCompatActivity
         UserTask userTask = new UserTask(mHeaderLayout, this);
         userTask.setUserProfile();
 
-        setOnClick();
         setNews();
+        setOnClick();
         event();
     }
 

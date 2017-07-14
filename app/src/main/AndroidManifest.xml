@@ -15,8 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/FullscreenNoActionBar">
-
-        <activity android:name=".splash.SplashActivity"
+        <activity
+            android:name=".splash.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,29 +24,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".auth.AuthActivity"
-            android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait" />
         <activity
             android:name=".main.MainActivity"
             android:label="@string/title_activity_main"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenNoActionBar" />
-
-        <activity android:name=".users.ProfileActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".main.NewPostActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".main.PostDetailActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".auth.SignInActivity"
+        <activity
+            android:name=".users.ProfileActivity"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name=".main.NewPostActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.PostDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".auth.SignInActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".settings.SettingsActivity"></activity>
     </application>
 
 </manifest>

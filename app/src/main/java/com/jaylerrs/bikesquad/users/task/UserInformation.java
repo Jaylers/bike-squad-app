@@ -17,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jaylerrs.bikesquad.R;
 import com.jaylerrs.bikesquad.users.model.UserInfo;
+import com.jaylerrs.bikesquad.utility.sharedstring.FirebaseTag;
 import com.jaylerrs.bikesquad.utility.sharedstring.SharedRef;
 
 /**
@@ -35,7 +36,7 @@ public class UserInformation {
     private EditText mEdtWeight;
     private EditText mEdtHeight;
 
-    private TextView mTxtPhone;
+    private TextView mTxtUsername;
     private TextView mTxtBirthDate;
     private TextView mTxtWeight;
     private TextView mTxtHeight;
@@ -55,7 +56,7 @@ public class UserInformation {
         mEdtWeight = (EditText) activity.findViewById(R.id.edt_profile_weight_value);
         mEdtHeight = (EditText) activity.findViewById(R.id.edt_profile_height_value);
 
-        mTxtPhone = (TextView) activity.findViewById(R.id.txt_profile_phone_value);
+        mTxtUsername = (TextView) activity.findViewById(R.id.txt_profile_username_value);
         mTxtBirthDate = (TextView) activity.findViewById(R.id.txt_profile_birth_date_value);
         mTxtWeight =(TextView) activity.findViewById(R.id.txt_profile_weight_value);
         mTxtHeight = (TextView) activity.findViewById(R.id.txt_profile_height_value);
@@ -79,13 +80,16 @@ public class UserInformation {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                mTxtPhone.setText(currentUser.getPhoneNumber());
-                if (!(dataSnapshot.child("birthDate").getValue().toString() == null)){
-                    mTxtBirthDate.setText(dataSnapshot.child("birthDate").getValue().toString());
-                }
-                mTxtWeight.setText(dataSnapshot.child("weight").getValue().toString());
-                mTxtHeight.setText(dataSnapshot.child("height").getValue().toString());
-                mSwtPrivacy.setChecked(dataSnapshot.child("privacy").getValue().toString().equals("true"));
+                mTxtUsername.setText(dataSnapshot.child(FirebaseTag.user_username).getValue().toString());
+                mTxtBirthDate.setText(dataSnapshot.child(FirebaseTag.user_birthDate).getValue().toString());
+                mTxtWeight.setText(dataSnapshot.child(FirebaseTag.user_weight).getValue().toString());
+                mTxtHeight.setText(dataSnapshot.child(FirebaseTag.user_height).getValue().toString());
+                mSwtPrivacy.setChecked(dataSnapshot.child(FirebaseTag.user_privacy).getValue().toString().equals("true"));
+
+                mEdtBirthDate.setText(dataSnapshot.child(FirebaseTag.user_birthDate).getValue().toString());
+                mEdtWeight.setText(dataSnapshot.child(FirebaseTag.user_weight).getValue().toString());
+                mEdtHeight.setText(dataSnapshot.child(FirebaseTag.user_height).getValue().toString());
+                mSwtPrivacyEdt.setChecked(dataSnapshot.child(FirebaseTag.user_privacy).getValue().toString().equals("true"));
             }
 
             @Override
@@ -130,7 +134,6 @@ public class UserInformation {
         mEdtCancel.setVisibility(View.GONE);
 
         mSwtPrivacy.setVisibility(View.VISIBLE);
-        mTxtPhone.setVisibility(View.VISIBLE);
         mTxtBirthDate.setVisibility(View.VISIBLE);
         mTxtWeight.setVisibility(View.VISIBLE);
         mTxtHeight.setVisibility(View.VISIBLE);
@@ -146,7 +149,6 @@ public class UserInformation {
         mEdtCancel.setVisibility(View.VISIBLE);
 
         mSwtPrivacy.setVisibility(View.GONE);
-        mTxtPhone.setVisibility(View.GONE);
         mTxtBirthDate.setVisibility(View.GONE);
         mTxtWeight.setVisibility(View.GONE);
         mTxtHeight.setVisibility(View.GONE);
