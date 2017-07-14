@@ -25,6 +25,9 @@ import com.jaylerrs.bikesquad.main.models.User;
 import com.jaylerrs.bikesquad.utility.dialog.DialogLoading;
 import com.jaylerrs.bikesquad.utility.sharedstring.FirebaseTag;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 
 public class SignInActivity extends BaseActivity implements View.OnClickListener {
 
@@ -43,6 +46,7 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+        ButterKnife.bind(this);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
@@ -56,6 +60,12 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
         // Click listeners
         mSignInButton.setOnClickListener(this);
         mSignUpButton.setOnClickListener(this);
+    }
+
+    @OnClick(R.id.sign_in_back) public void onBack(){
+        Intent intent = new Intent(SignInActivity.this, AuthActivity.class);
+        startActivity(intent);
+        this.finish();
     }
 
     @Override

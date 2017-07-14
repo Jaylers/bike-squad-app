@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/dialog_base_style"
+    style="@style/dialog_style"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            style="@style/dialog_base_style"
+            style="@style/dialog_style"
             android:orientation="horizontal">
 
             <Button

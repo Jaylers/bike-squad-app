@@ -18,7 +18,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.jaylerrs.bikesquad.R;
 import com.jaylerrs.bikesquad.users.model.UserInfo;
 import com.jaylerrs.bikesquad.utility.sharedstring.FirebaseTag;
-import com.jaylerrs.bikesquad.utility.sharedstring.SharedRef;
 
 /**
  * Created by jaylerr on 13-Jul-17.
@@ -74,7 +73,7 @@ public class UserInformation {
 
     public void displayInformation(){
         databaseReference = FirebaseDatabase.getInstance().getReference()
-                .child(SharedRef.ref_user).child(currentUser.getUid());
+                .child(FirebaseTag.users).child(currentUser.getUid());
         databaseReference.keepSynced(false);
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -103,7 +102,7 @@ public class UserInformation {
 
     public void getInformation(){
         databaseReference = FirebaseDatabase.getInstance().getReference()
-                .child(SharedRef.ref_user).child(currentUser.getUid());
+                .child(FirebaseTag.users).child(currentUser.getUid());
         databaseReference.keepSynced(false);
         final UserInfo userInfo = new UserInfo();
         final String[] username = {null};
@@ -155,20 +154,20 @@ public class UserInformation {
     }
 
     public void setUserInformation(){
-        databaseReference = FirebaseDatabase.getInstance().getReference().child(SharedRef.ref_user);
+        databaseReference = FirebaseDatabase.getInstance().getReference().child(FirebaseTag.users);
 
         DatabaseReference userinfo = databaseReference.child(currentUser.getUid());
-        userinfo.child(SharedRef.ref_user).setValue(currentUser.getEmail());
+        userinfo.child(FirebaseTag.users).setValue(currentUser.getEmail());
         if(!mEdtBirthDate.getText().toString().isEmpty()){
-            userinfo.child("birthDate").setValue(mEdtBirthDate.getText().toString());
+            userinfo.child(FirebaseTag.user_birthDate).setValue(mEdtBirthDate.getText().toString());
         }
         if (!mEdtWeight.getText().toString().isEmpty()){
-            userinfo.child("weight").setValue(mEdtWeight.getText().toString());
+            userinfo.child(FirebaseTag.user_weight).setValue(mEdtWeight.getText().toString());
         }
         if (!mEdtHeight.getText().toString().isEmpty()){
-            userinfo.child("height").setValue(mEdtHeight.getText().toString());
+            userinfo.child(FirebaseTag.user_height).setValue(mEdtHeight.getText().toString());
         }
-        userinfo.child("privacy").setValue(mSwtPrivacyEdt.isChecked());
+        userinfo.child(FirebaseTag.user_privacy).setValue(mSwtPrivacyEdt.isChecked());
     }
 
     private Boolean isBirthDate(){

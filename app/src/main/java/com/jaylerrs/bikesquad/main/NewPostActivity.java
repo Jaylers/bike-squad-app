@@ -16,7 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.jaylerrs.bikesquad.R;
 import com.jaylerrs.bikesquad.main.models.Post;
 import com.jaylerrs.bikesquad.main.models.User;
-import com.jaylerrs.bikesquad.utility.sharedstring.SharedRef;
+import com.jaylerrs.bikesquad.utility.sharedstring.FirebaseTag;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -80,7 +80,7 @@ public class NewPostActivity extends BaseActivity {
 
         // [START single_value_read]
         final String userId = getUid();
-        mDatabase.child(SharedRef.ref_user).child(userId).addListenerForSingleValueEvent(
+        mDatabase.child(FirebaseTag.users).child(userId).addListenerForSingleValueEvent(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {

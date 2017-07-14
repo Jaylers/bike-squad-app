@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -15,6 +16,8 @@ import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -26,6 +29,7 @@ import com.jaylerrs.bikesquad.utility.manager.LanguageManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class SplashActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
@@ -37,11 +41,15 @@ public class SplashActivity extends AppCompatActivity implements GoogleApiClient
     private GoogleApiClient mGoogleApiClient;
     private FirebaseUser currentUser;
     private DatabaseReference databaseReference;
+    private Boolean ver;
 
     @BindView(R.id.txt_splash_message)
     TextView mMessage;
-    @BindView(R.id.relate_splash)
+    @BindView(R.id.relate_splash_base)
     RelativeLayout mRelate;
+    @BindView(R.id.relate_splash) RelativeLayout mRelateSplash;
+    @BindView(R.id.relate_splash_verify) RelativeLayout mRelateVerify;
+    @BindView(R.id.txt_splash_warning) TextView mTxtWarning;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +83,7 @@ public class SplashActivity extends AppCompatActivity implements GoogleApiClient
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                ver = currentUser.isEmailVerified();
                 connectionChecker();
             }
         }, 2500);
@@ -109,17 +118,52 @@ public class SplashActivity extends AppCompatActivity implements GoogleApiClient
     private void connectionProperty(){
 
         if (currentUser != null){
-            if (currentUser.isEmailVerified()){
+            if (ver){
                 Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(intent);
                 this.finish();
             }else {
-
+                mRelateSplash.setVisibility(View.GONE);
+                mRelateVerify.setVisibility(View.VISIBLE);
             }
         }else {
             Intent intent = new Intent(SplashActivity.this, AuthActivity.class);
             startActivity(intent);
             this.finish();
+        }
+    }
+
+    @OnClick(R.id.verify_email_button) public void onVerify(){
+        sendEmailVerification();
+    }
+
+    @OnClick(R.id.verify_log_out_button) public void onLogOut(){
+        mAuth.signOut();
+
+        Intent intent = new Intent(SplashActivity.this, SplashActivity.class);
+        startActivity(intent);
+        this.finish();
+
+    }
+
+    private void sendEmailVerification(){
+        if (currentUser.isEmailVerified()){
+            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+            startActivity(intent);
+            this.finish();
+        }else {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+            user.sendEmailVerification()
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Log.d(TAG, "Email sent.");
+                                mTxtWarning.setText(getString(R.string.ver_message_detail_after_send));
+                            }
+                        }
+                    });
         }
     }
 

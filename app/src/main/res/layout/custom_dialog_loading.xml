@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/dialog_base_style"
-    android:background="@drawable/custom_border_round"
+    android:background="@drawable/custom_border_loading"
 
     android:orientation="vertical" >
 
@@ -14,7 +14,8 @@
         android:orientation="vertical">
         <ProgressBar
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"/>
         <TextView
             android:id="@+id/txt_message"
             android:layout_width="wrap_content"

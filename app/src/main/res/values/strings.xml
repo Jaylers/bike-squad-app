@@ -47,7 +47,7 @@
     <string name="app_message_ok">OK</string>
     <string name="app_message_confirm">Confirm</string>
     <string name="app_message_cancel">Cancel</string>
-    <string name="app_message_send_an_email">Send an email</string>
+    <string name="app_message_send_an_email">Verify Email</string>
     <string name="app_message_request_permission_call">Please allow us to make a Call</string>
     <string name="app_message_permission_denied">Permission denied</string>
     <string name="app_message_confirm_to_close_app">Press back again to close</string>
@@ -130,7 +130,7 @@
     //Log out
     <string name="sign_out_message_title">Log out confirmation</string>
     <string name="sign_out_message_tip">Remember, You can stay signed in away as long as you using this device.</string>
-    <string name="sign_out_message_crying">Are you sure to LOG OUT? We will regret without you.</string>
+    <string name="sign_out_message_crying">Are you sure to LOG OUT? We will regret if without you.</string>
     <string name="sign_out_message_ask_back">Please back. We will waiting for you.</string>
 
 </resources>

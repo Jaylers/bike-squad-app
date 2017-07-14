@@ -82,7 +82,7 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
                 .fitCenter()
                 .animate(R.anim.fade_in)
                 .placeholder(R.drawable.img_users)
-                .error(R.drawable.ic_img_error)
+                .error(R.drawable.img_users)
                 .into(mProfileImage);
 
         mProfileName.setText(currentUser.getDisplayName());

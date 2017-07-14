@@ -24,7 +24,7 @@ import com.jaylerrs.bikesquad.R;
 import com.jaylerrs.bikesquad.main.models.Comment;
 import com.jaylerrs.bikesquad.main.models.Post;
 import com.jaylerrs.bikesquad.main.models.User;
-import com.jaylerrs.bikesquad.utility.sharedstring.SharedRef;
+import com.jaylerrs.bikesquad.utility.sharedstring.FirebaseTag;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,9 +62,9 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
 
         // Initialize Database
         mPostReference = FirebaseDatabase.getInstance().getReference()
-                .child("posts").child(mPostKey);
+                .child(FirebaseTag.post).child(mPostKey);
         mCommentsReference = FirebaseDatabase.getInstance().getReference()
-                .child("post-comments").child(mPostKey);
+                .child(FirebaseTag.post_comments).child(mPostKey);
 
         // Initialize Views
         mAuthorPhoto = (ImageView) findViewById(R.id.post_author_photo);
@@ -142,7 +142,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
 
     private void postComment() {
         final String uid = getUid();
-        FirebaseDatabase.getInstance().getReference().child(SharedRef.ref_user).child(uid)
+        FirebaseDatabase.getInstance().getReference().child(FirebaseTag.users).child(uid)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {

@@ -27,7 +27,11 @@
     </style>
 
     <style name="dialog_base_style">
-        <item name="android:background">@drawable/custom_border_loading</item>
+        <item name="android:background">@drawable/dialog_sharpe</item>
+    </style>
+
+    <style name="dialog_style">
+        <item name="android:background">@drawable/dialog_sharpe</item>
     </style>
 
     <style name="ThemeOverlay.MyBlueButton" parent="ThemeOverlay.AppCompat.Dark">
