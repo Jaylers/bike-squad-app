@@ -135,7 +135,7 @@
     <string name="new_message_body_title">Title</string>
     <string name="new_message_body_detail">Detail</string>
     <string name="new_message_title">New Event</string>
-    <string name="write_a_comment">new_message_writing</string>
-    <string name="post">new_message_post</string>
+    <string name="write_a_comment">writing comment . .</string>
+    <string name="new_message_post">post</string>
 
 </resources>
