@@ -30,7 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jaylerrs.bikesquad.R;
-import com.jaylerrs.bikesquad.main.models.User;
+import com.jaylerrs.bikesquad.events.models.User;
 import com.jaylerrs.bikesquad.splash.SplashActivity;
 import com.jaylerrs.bikesquad.utility.dialog.DialogLoading;
 import com.jaylerrs.bikesquad.utility.sharedstring.FirebaseTag;

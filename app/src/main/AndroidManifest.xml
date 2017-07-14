@@ -36,10 +36,10 @@
             android:name=".users.ProfileActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".main.NewPostActivity"
+            android:name=".events.NewPostActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".main.PostDetailActivity"
+            android:name=".events.PostDetailActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".auth.SignInActivity"

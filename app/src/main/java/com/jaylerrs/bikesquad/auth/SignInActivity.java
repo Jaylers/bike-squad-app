@@ -21,7 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.jaylerrs.bikesquad.R;
 import com.jaylerrs.bikesquad.main.BaseActivity;
 import com.jaylerrs.bikesquad.main.MainActivity;
-import com.jaylerrs.bikesquad.main.models.User;
+import com.jaylerrs.bikesquad.events.models.User;
 import com.jaylerrs.bikesquad.utility.dialog.DialogLoading;
 import com.jaylerrs.bikesquad.utility.sharedstring.FirebaseTag;
 

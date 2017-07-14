@@ -1,4 +1,4 @@
-package com.jaylerrs.bikesquad.main.models;
+package com.jaylerrs.bikesquad.events.models;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 

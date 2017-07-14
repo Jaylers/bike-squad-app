@@ -1,4 +1,4 @@
-package com.jaylerrs.bikesquad.main.viewholder;
+package com.jaylerrs.bikesquad.events.viewholder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jaylerrs.bikesquad.R;
-import com.jaylerrs.bikesquad.main.models.Post;
+import com.jaylerrs.bikesquad.events.models.Post;
 
 
 public class PostViewHolder extends RecyclerView.ViewHolder {

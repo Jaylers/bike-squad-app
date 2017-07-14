@@ -59,7 +59,7 @@
     <string name="app_message_language">language</string>
     <string name="app_message_log_out">log out</string>
     <string name="err_message_connecting">Connecting . .</string>
-    <string name="app_message_logging_out">Logging out...</string>
+    <string name="app_message_logging_out">Logging out . . .</string>
     <string name="title_home">Home</string>
     <string name="title_activity">Activity</string>
     <string name="title_settings">Settings</string>
@@ -132,5 +132,10 @@
     <string name="sign_out_message_tip">Remember, You can stay signed in away as long as you using this device.</string>
     <string name="sign_out_message_crying">Are you sure to LOG OUT? We will regret if without you.</string>
     <string name="sign_out_message_ask_back">Please back. We will waiting for you.</string>
+    <string name="new_message_body_title">Title</string>
+    <string name="new_message_body_detail">Detail</string>
+    <string name="new_message_title">New Event</string>
+    <string name="write_a_comment">new_message_writing</string>
+    <string name="post">new_message_post</string>
 
 </resources>

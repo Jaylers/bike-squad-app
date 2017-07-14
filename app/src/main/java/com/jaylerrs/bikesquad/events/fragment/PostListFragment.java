@@ -1,4 +1,4 @@
-package com.jaylerrs.bikesquad.main.fragment;
+package com.jaylerrs.bikesquad.events.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,9 +20,9 @@ import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.Transaction;
 import com.jaylerrs.bikesquad.R;
-import com.jaylerrs.bikesquad.main.PostDetailActivity;
-import com.jaylerrs.bikesquad.main.models.Post;
-import com.jaylerrs.bikesquad.main.viewholder.PostViewHolder;
+import com.jaylerrs.bikesquad.events.PostDetailActivity;
+import com.jaylerrs.bikesquad.events.models.Post;
+import com.jaylerrs.bikesquad.events.viewholder.PostViewHolder;
 
 public abstract class PostListFragment extends Fragment {
 

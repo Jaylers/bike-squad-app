@@ -1,4 +1,4 @@
-package com.jaylerrs.bikesquad.main;
+package com.jaylerrs.bikesquad.events;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -21,9 +21,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jaylerrs.bikesquad.R;
-import com.jaylerrs.bikesquad.main.models.Comment;
-import com.jaylerrs.bikesquad.main.models.Post;
-import com.jaylerrs.bikesquad.main.models.User;
+import com.jaylerrs.bikesquad.events.models.Comment;
+import com.jaylerrs.bikesquad.events.models.Post;
+import com.jaylerrs.bikesquad.events.models.User;
+import com.jaylerrs.bikesquad.main.BaseActivity;
 import com.jaylerrs.bikesquad.utility.sharedstring.FirebaseTag;
 
 import java.util.ArrayList;

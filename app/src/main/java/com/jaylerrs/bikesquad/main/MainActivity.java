@@ -30,9 +30,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.jaylerrs.bikesquad.R;
 import com.jaylerrs.bikesquad.auth.AuthActivity;
-import com.jaylerrs.bikesquad.main.fragment.MyPostsFragment;
-import com.jaylerrs.bikesquad.main.fragment.MyTopPostsFragment;
-import com.jaylerrs.bikesquad.main.fragment.RecentPostsFragment;
+import com.jaylerrs.bikesquad.events.NewPostActivity;
+import com.jaylerrs.bikesquad.events.fragment.MyPostsFragment;
+import com.jaylerrs.bikesquad.events.fragment.MyTopPostsFragment;
+import com.jaylerrs.bikesquad.events.fragment.RecentPostsFragment;
 import com.jaylerrs.bikesquad.main.task.UserTask;
 import com.jaylerrs.bikesquad.users.ProfileActivity;
 import com.jaylerrs.bikesquad.utility.dialog.DialogLoading;
@@ -170,7 +171,33 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void friends(){
-
+        mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
+            private final Fragment[] mFragments = new Fragment[] {
+                    new RecentPostsFragment(),
+                    new MyPostsFragment(),
+                    new MyTopPostsFragment(),
+            };
+            private final String[] mFragmentNames = new String[] {
+                    getString(R.string.menu_main_friends),
+            };
+            @Override
+            public Fragment getItem(int position) {
+                return mFragments[position];
+            }
+            @Override
+            public int getCount() {
+                return mFragments.length;
+            }
+            @Override
+            public CharSequence getPageTitle(int position) {
+                return mFragmentNames[position];
+            }
+        };
+        // Set up the ViewPager with the sections adapter.
+        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager.setAdapter(mPagerAdapter);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(mViewPager);
     }
 
     private void event(){

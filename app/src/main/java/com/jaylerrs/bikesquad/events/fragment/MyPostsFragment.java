@@ -1,4 +1,4 @@
-package com.jaylerrs.bikesquad.main.fragment;
+package com.jaylerrs.bikesquad.events.fragment;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
