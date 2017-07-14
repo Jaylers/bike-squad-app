@@ -1,9 +1,10 @@
 package com.jaylerrs.bikesquad.main;
 
-import android.app.ProgressDialog;
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.jaylerrs.bikesquad.utility.dialog.DialogLoading;
 
 
 public class BaseActivity extends AppCompatActivity {
@@ -12,9 +13,8 @@ public class BaseActivity extends AppCompatActivity {
 
     public void showProgressDialog() {
         if (mProgressDialog == null) {
-            mProgressDialog = new ProgressDialog(this);
+            mProgressDialog = new ProgressDialog(this, "Loading...");
             mProgressDialog.setCancelable(false);
-            mProgressDialog.setMessage("Loading...");
         }
 
         mProgressDialog.show();
@@ -30,5 +30,10 @@ public class BaseActivity extends AppCompatActivity {
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 
+    public class ProgressDialog extends DialogLoading{
 
+        public ProgressDialog(Activity activity, String message) {
+            super(activity, message);
+        }
+    }
 }

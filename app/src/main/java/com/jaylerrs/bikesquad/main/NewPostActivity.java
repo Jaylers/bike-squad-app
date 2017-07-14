@@ -16,6 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.jaylerrs.bikesquad.R;
 import com.jaylerrs.bikesquad.main.models.Post;
 import com.jaylerrs.bikesquad.main.models.User;
+import com.jaylerrs.bikesquad.utility.sharedstring.SharedRef;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -75,26 +76,29 @@ public class NewPostActivity extends BaseActivity {
         // Disable button so there are no multi-posts
         setEditingEnabled(false);
         Toast.makeText(this, "Posting...", Toast.LENGTH_SHORT).show();
+        showProgressDialog();
 
         // [START single_value_read]
         final String userId = getUid();
-        mDatabase.child("users").child(userId).addListenerForSingleValueEvent(
+        mDatabase.child(SharedRef.ref_user).child(userId).addListenerForSingleValueEvent(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         // Get user value
-                        User user = dataSnapshot.getValue(User.class);
-
+//                        String user = dataSnapshot.child("username").getValue().toString();
+                        User cUser = dataSnapshot.getValue(User.class);
                         // [START_EXCLUDE]
-                        if (user == null) {
+                        if (cUser == null) {
                             // User is null, error out
                             Log.e(TAG, "User " + userId + " is unexpectedly null");
                             Toast.makeText(NewPostActivity.this,
                                     "Error: could not fetch user.",
                                     Toast.LENGTH_SHORT).show();
+                            hideProgressDialog();
                         } else {
                             // Write new post
-                            writeNewPost(userId, user.username, title, body);
+                            writeNewPost(userId, cUser.getUsername(), title, body);
+                            hideProgressDialog();
                         }
 
                         // Finish this Activity, back to the stream

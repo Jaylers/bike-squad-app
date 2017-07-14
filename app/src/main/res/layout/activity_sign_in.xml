@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_auth_background"
+    tools:context="com.jaylerrs.bikesquad.auth.SignInActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:background="@color/white_overlay">
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_marginTop="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/img_logo" />
+
+        <LinearLayout
+            android:id="@+id/layout_email_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/icon"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/field_email"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:hint="@string/auth_message_email"
+                style="@style/button_round_style"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/field_password"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:hint="@string/profile_message_password"
+                style="@style/button_round_style"
+                android:inputType="textPassword"
+                android:maxLines="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:fitsSystemWindows="true"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_sign_in"
+                android:layout_width="160dp"
+                android:layout_height="45dp"
+                android:padding="2dp"
+                android:background="@drawable/button_bottom_left_round_orange"
+                style="@style/button_round_style"
+                android:text="@string/common_signin_button_text" />
+
+
+            <Button
+                android:id="@+id/button_sign_up"
+                android:layout_width="160dp"
+                android:layout_height="45dp"
+                android:padding="2dp"
+                android:background="@drawable/button_bottom_right_round_green"
+                android:text="@string/auth_message_register" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

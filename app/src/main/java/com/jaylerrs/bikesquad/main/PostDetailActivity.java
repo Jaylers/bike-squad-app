@@ -24,6 +24,7 @@ import com.jaylerrs.bikesquad.R;
 import com.jaylerrs.bikesquad.main.models.Comment;
 import com.jaylerrs.bikesquad.main.models.Post;
 import com.jaylerrs.bikesquad.main.models.User;
+import com.jaylerrs.bikesquad.utility.sharedstring.SharedRef;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -141,7 +142,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
 
     private void postComment() {
         final String uid = getUid();
-        FirebaseDatabase.getInstance().getReference().child("users").child(uid)
+        FirebaseDatabase.getInstance().getReference().child(SharedRef.ref_user).child(uid)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {

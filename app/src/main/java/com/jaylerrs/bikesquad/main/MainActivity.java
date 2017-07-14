@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
         } else if (id == R.id.nav_friends) {
             actionBar.setTitle(getString(R.string.app_name));
-            actionBar.setTitle(getString(R.string.menu_main_profile));
+            actionBar.setTitle(getString(R.string.menu_main_friends));
             friends();
         } else if (id == R.id.nav_event) {
             actionBar.setTitle(getString(R.string.menu_main_event));

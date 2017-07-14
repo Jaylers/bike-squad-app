@@ -35,4 +35,9 @@ public class DialogLoading extends Dialog{
         messageView = (TextView) findViewById(R.id.txt_message);
         messageView.setText(message);
     }
+
+    @Override
+    public void setCancelable(boolean flag) {
+        super.setCancelable(flag);
+    }
 }

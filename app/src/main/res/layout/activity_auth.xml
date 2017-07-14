@@ -74,18 +74,11 @@
         android:layout_height="match_parent"
         android:background="@color/white_huge_alpha"
         android:orientation="vertical">
-        <ImageView
-            android:id="@+id/img_sign_in_logo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:layout_marginBottom="20dp"
-            android:src="@mipmap/ic_launcher_round"/>
         <TextView
             android:id="@+id/txt_sign_in_title"
-            android:layout_below="@id/img_sign_in_logo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
             android:textAlignment="center"
             android:textSize="30sp"
             android:padding="5dp"
@@ -117,6 +110,17 @@
             android:src="@drawable/img_google_btn"
             android:layout_below="@+id/txt_sign_in_message"
             android:layout_alignParentStart="true" />
+
+        <Button
+            android:id="@+id/btn_auth_switch_sign_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white_overlay"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:textStyle="bold"
+            android:text="@string/auth_message_user_email"/>
     </RelativeLayout>
 
 </LinearLayout>

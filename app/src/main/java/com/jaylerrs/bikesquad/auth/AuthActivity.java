@@ -5,13 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,8 +17,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -36,11 +30,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jaylerrs.bikesquad.R;
-import com.jaylerrs.bikesquad.main.MainActivity;
+import com.jaylerrs.bikesquad.main.models.User;
+import com.jaylerrs.bikesquad.splash.SplashActivity;
 import com.jaylerrs.bikesquad.utility.dialog.DialogLoading;
-import com.jaylerrs.bikesquad.utility.manager.ConnectionsManager;
-import com.jaylerrs.bikesquad.utility.manager.LanguageManager;
-import com.jaylerrs.bikesquad.utility.sharedstring.SharedRef;
+import com.jaylerrs.bikesquad.utility.sharedstring.FirebaseTag;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,16 +44,8 @@ public class AuthActivity extends AppCompatActivity implements
         View.OnClickListener{
 
     @BindView(R.id.txt_sign_in_message) TextView mMessage;
-    @BindView(R.id.relate_auth_verify) RelativeLayout mRelate_verify;
-    @BindView(R.id.relat_auth_sign_in) RelativeLayout mRelate_sign_in;
-    @BindView(R.id.linear_auth_base) LinearLayout mAuth_base;
-    @BindView(R.id.txt_verify_detail) TextView mVerify_detail;
-    @BindView(R.id.btn_verify_log_out) Button mVerify_log_out;
-    @BindView(R.id.btn_verify_submit) Button mVerify;
-
 
     private static final int RC_SIGN_IN = 9001;
-    private ConnectionsManager connection;
     private static String TAG = null;
     private Activity activity;
     private Progressing progressing;
@@ -74,6 +59,7 @@ public class AuthActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
         ButterKnife.bind(this);
+
         activity = this;
         TAG = this.getTitle().toString();
         mAuth = FirebaseAuth.getInstance();
@@ -91,22 +77,6 @@ public class AuthActivity extends AppCompatActivity implements
                 .build();
 
         currentUser = mAuth.getCurrentUser();
-
-        LanguageManager languageManager = new LanguageManager(AuthActivity.this);
-        languageManager.setApplicationLanguage();
-        connection = new ConnectionsManager(AuthActivity.this);
-
-        connectionChecker();
-    }
-
-    private void connectionChecker(){
-        if (connection.isConnection()){
-            connectionProperty();
-        }else {
-            mMessage.setText(getString(R.string.err_message_connection_failure));
-            mMessage.setVisibility(View.VISIBLE);
-            connectionFailure();
-        }
     }
 
     @Override
@@ -120,126 +90,16 @@ public class AuthActivity extends AppCompatActivity implements
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
-    @OnClick(R.id.btn_verify_submit)public void onVerify(){
-        sendEmailVerification();
-    }
-
-    @OnClick(R.id.btn_verify_log_out) public void onLogOut(){
-        Log.i("User", "Sign out");
-        mAuth.signOut();
-        Auth.GoogleSignInApi.revokeAccess(mGoogleApiClient).setResultCallback(
-                new ResultCallback<Status>() {
-                    @Override
-                    public void onResult(@NonNull Status status) {
-                        reStartApp();
-                    }
-                });
-        //reStartApp();
+    @OnClick(R.id.btn_auth_switch_sign_in) public void onSwitchSignInOption(){
+        Intent intent = new Intent(AuthActivity.this, SignInActivity.class);
+        startActivity(intent);
+        activity.finish();
     }
 
     private void reStartApp(){
-        Intent intent = new Intent(activity, AuthActivity.class);
+        Intent intent = new Intent(activity, SplashActivity.class);
         activity.finish();
         startActivity(intent);
-    }
-
-    private void connectionFailure(){
-        Snackbar.make(mAuth_base, getString(R.string.err_message_connection_failure),
-                Snackbar.LENGTH_INDEFINITE).setAction(getString(R.string.message_retry), new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        connectionChecker();
-                    }
-                }, 1000);
-            }
-        }).show();
-    }
-
-    private void connectionProperty(){
-
-        if (currentUser != null){
-            Boolean aa = currentUser.isEmailVerified();
-            if (currentUser.isEmailVerified()){
-                Intent intent = new Intent(AuthActivity.this, MainActivity.class);
-                startActivity(intent);
-                this.finish();
-            }else {
-                mRelate_sign_in.setVisibility(View.GONE);
-                mRelate_verify.setVisibility(View.VISIBLE);
-            }
-        }
-    }
-
-    private void sendEmailVerification() {
-        // Disable button
-        mVerify.setEnabled(false);
-
-        // Send verification email
-        // [START send_email_verification]
-        final FirebaseUser user = mAuth.getCurrentUser();
-        user.sendEmailVerification()
-                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        // [START_EXCLUDE]
-                        // Re-enable button
-                        mVerify.setEnabled(true);
-
-                        if (task.isSuccessful()) {
-                            Toast.makeText(AuthActivity.this,
-                                    "Verification email sent to " + user.getEmail(),
-                                    Toast.LENGTH_SHORT).show();
-                            mVerify_detail.setText(getString(R.string.ver_message_verify_send_to));
-                        } else {
-                            Log.e(TAG, "sendEmailVerification", task.getException());
-                            Toast.makeText(AuthActivity.this,
-                                    "Failed to send verification email.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                        // [END_EXCLUDE]
-                    }
-                });
-        // [END send_email_verification]
-    }
-
-    private void signIn(String email, String password) {
-        Log.d(TAG, "signIn:" + email);
-
-        showProgressDialog(getString(R.string.auth_message_signing_in));
-
-        // [START sign_in_with_email]
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithEmail:success");
-                            Intent intent = new Intent(AuthActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            activity.finish();
-
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(AuthActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-
-                        // [START_EXCLUDE]
-                        if (!task.isSuccessful()) {
-                            mMessage.setText(getString(R.string.auth_message_auth_failure_wrong_email_password));
-                            mMessage.setVisibility(View.VISIBLE);
-                        }
-                        hideProgressDialog();
-                        // [END_EXCLUDE]
-                    }
-                });
-        // [END sign_in_with_email]
     }
 
     private void showProgressDialog(String message){
@@ -308,27 +168,23 @@ public class AuthActivity extends AppCompatActivity implements
     private void addUserInformation(){
         currentUser = mAuth.getCurrentUser();
         final String[] username = currentUser.getEmail().toString().split("@");
-        databaseReference = FirebaseDatabase.getInstance().getReference().child(SharedRef.ref_user)
+        databaseReference = FirebaseDatabase.getInstance().getReference().child(FirebaseTag.users)
                 .child(currentUser.getUid());
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                if (!(dataSnapshot.child("username").getValue() == null)){
+                if (!(dataSnapshot.child(FirebaseTag.user_username).getValue() == null)){
                     Toast.makeText(AuthActivity.this,
-                            "Welcome back.",
+                            getString(R.string.auth_message_welcome_back),
                             Toast.LENGTH_SHORT).show();
                 }else {
-                    databaseReference.child(SharedRef.ref_user).setValue(currentUser.getUid());
-                    databaseReference.child("username").setValue(username[0]);
-                    databaseReference.child("birthDate").setValue("010101");
-                    databaseReference.child("weight").setValue("0");
-                    databaseReference.child("height").setValue("0");
-                    databaseReference.child("privacy").setValue("false");
+                    User user = new User(currentUser.getEmail(), username[0], "010101", "00", "00", false);
+                    databaseReference.setValue(user);
 
                     Toast.makeText(AuthActivity.this,
-                            "Welcome to Bike Squad.",
+                            getString(R.string.auth_message_welcome),
                             Toast.LENGTH_SHORT).show();
                 }
             }
