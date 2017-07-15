@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -14,11 +14,24 @@
 
     <TextView
         android:id="@+id/post_author"
+        android:layout_toEndOf="@id/post_author_photo"
         style="@style/Base.TextAppearance.AppCompat.Small"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="10dp"
         android:gravity="center_vertical"
         tools:text="someauthor@email.com" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/post_route"
+        android:layout_toEndOf="@id/post_author_photo"
+        android:layout_below="@+id/post_author"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:textStyle="italic"
+        android:text="@string/heading_route"/>
+
+</RelativeLayout>

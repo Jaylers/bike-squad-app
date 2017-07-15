@@ -36,8 +36,8 @@ public class Post {
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
-        result.put("rid", uid);
-        result.put("mapId", author);
+        result.put("uid", uid);
+        result.put("author", author);
         result.put("title", title);
         result.put("body", body);
         result.put("starCount", starCount);

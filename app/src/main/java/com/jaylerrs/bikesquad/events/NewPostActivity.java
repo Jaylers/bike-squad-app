@@ -38,6 +38,7 @@ public class NewPostActivity extends BaseActivity {
     private DatabaseReference mDatabase;
     // [END declare_database_ref]
 
+
     @BindView(R.id.field_title) EditText mTitleField;
     @BindView(R.id.field_body) EditText mBodyField;
     @BindView(R.id.fab_submit_post) FloatingActionButton mSubmitButton;
@@ -148,7 +149,7 @@ public class NewPostActivity extends BaseActivity {
 
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("/"+FirebaseTag.post+"/" + key, postValues);
-        childUpdates.put("/"+FirebaseTag.user_post+"/" + userId + "/" + key, postValues);
+        childUpdates.put("/"+FirebaseTag.post_user +"/" + userId + "/" + key, postValues);
 
         mDatabase.updateChildren(childUpdates);
     }

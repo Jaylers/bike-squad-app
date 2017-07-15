@@ -11,7 +11,7 @@ public class MyPostsFragment extends PostListFragment {
     @Override
     public Query getQuery(DatabaseReference databaseReference) {
         // All my posts
-        return databaseReference.child(FirebaseTag.user_post)
+        return databaseReference.child(FirebaseTag.post_user)
                 .child(getUid());
     }
 }

@@ -98,7 +98,7 @@ public abstract class PostListFragment extends Fragment {
                     public void onClick(View starView) {
                         // Need to write to both places the post is stored
                         DatabaseReference globalPostRef = mDatabase.child(FirebaseTag.post).child(postRef.getKey());
-                        DatabaseReference userPostRef = mDatabase.child(FirebaseTag.user_post).child(model.uid).child(postRef.getKey());
+                        DatabaseReference userPostRef = mDatabase.child(FirebaseTag.post_user).child(model.uid).child(postRef.getKey());
 
                         // Run two transactions
                         onStarClicked(globalPostRef);

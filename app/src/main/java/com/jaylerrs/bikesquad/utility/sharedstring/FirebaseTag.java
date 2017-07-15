@@ -5,11 +5,12 @@ package com.jaylerrs.bikesquad.utility.sharedstring;
  */
 
 public class FirebaseTag {
-    public static String users  =                       "users";
-    public static String user_post  =                   "user-posts";
+
+    public static String post_user =                    "posts-user";
     public static String post =                         "posts";
     public static String post_comments =                "post-comments";
 
+    public static String users  =                       "users";
     public static String user_username =                "username";
     public static String user_email =                   "email";
     public static String user_birthDate =               "birthDate";

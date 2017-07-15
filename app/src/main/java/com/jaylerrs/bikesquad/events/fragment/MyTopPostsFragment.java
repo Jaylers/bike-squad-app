@@ -13,7 +13,7 @@ public class MyTopPostsFragment extends PostListFragment {
         // [START my_top_posts_query]
         // My top posts by number of stars
         String myUserId = getUid();
-        Query myTopPostsQuery = databaseReference.child(FirebaseTag.user_post).child(myUserId)
+        Query myTopPostsQuery = databaseReference.child(FirebaseTag.post_user).child(myUserId)
                 .orderByChild(FirebaseTag.star_count);
         // [END my_top_posts_query]
 

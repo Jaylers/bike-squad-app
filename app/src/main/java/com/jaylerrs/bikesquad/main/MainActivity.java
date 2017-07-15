@@ -3,6 +3,7 @@ package com.jaylerrs.bikesquad.main;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -25,12 +26,9 @@ import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.jaylerrs.bikesquad.R;
-import com.jaylerrs.bikesquad.auth.AuthActivity;
 import com.jaylerrs.bikesquad.events.fragment.MyPostsFragment;
 import com.jaylerrs.bikesquad.events.fragment.MyTopPostsFragment;
 import com.jaylerrs.bikesquad.events.fragment.RecentPostsFragment;
@@ -38,6 +36,7 @@ import com.jaylerrs.bikesquad.main.task.UserTask;
 import com.jaylerrs.bikesquad.route.NewRouteActivity;
 import com.jaylerrs.bikesquad.route.fragment.RecentRouteFragment;
 import com.jaylerrs.bikesquad.route.fragment.TopRouteFragment;
+import com.jaylerrs.bikesquad.settings.SettingsActivity;
 import com.jaylerrs.bikesquad.users.ProfileActivity;
 import com.jaylerrs.bikesquad.utility.dialog.DialogLoading;
 import com.jaylerrs.bikesquad.utility.dialog.DialogNewsMessages;
@@ -128,13 +127,27 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
+    int t = 0;
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+                if (t==0){
+                    t++;
+                    Toast.makeText(getApplicationContext(), getString(R.string.message_back_press),
+                            Toast.LENGTH_SHORT).show();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            t = 0;
+                        }
+                    }, 2500);
+                }else if (t >= 1){
+                    super.onBackPressed();
+                }
         }
     }
 
@@ -167,7 +180,7 @@ public class MainActivity extends AppCompatActivity
             actionBar.setTitle(getString(R.string.menu_main_Bike));
             bike();
         } else if (id == R.id.nav_settings) {
-            revokeAccess();
+            settings();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -283,28 +296,17 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    private void revokeAccess() {
-        progressing = new Progressing(activity, getString(R.string.app_message_logging_out));
-        progressing.show();
-        // Firebase sign out
-        mAuth.signOut();
-        // Google revoke access
-        Auth.GoogleSignInApi.revokeAccess(mGoogleApiClient).setResultCallback(
-                new ResultCallback<Status>() {
-                    @Override
-                    public void onResult(@NonNull Status status) {
-                        Intent intent = new Intent(MainActivity.this, AuthActivity.class);
-                        progressing.dismiss();
-                        startActivity(intent);
-                        activity.finish();
-                    }
-                });
+    private void settings(){
+        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+        startActivity(intent);
     }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
+
+
 
     private class Progressing extends DialogLoading{
 

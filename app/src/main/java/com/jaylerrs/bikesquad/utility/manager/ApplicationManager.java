@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
-import com.jaylerrs.bikesquad.auth.AuthActivity;
+import com.jaylerrs.bikesquad.splash.SplashActivity;
 
 /**
  * Created by jaylerr on 07-Jun-17.
@@ -29,7 +29,7 @@ public class ApplicationManager {
     }
 
     public void restartApplication(){
-        Intent intent = new Intent(activity, AuthActivity.class);
+        Intent intent = new Intent(activity, SplashActivity.class);
         activity.startActivity(intent);
         activity.finish();
     }
