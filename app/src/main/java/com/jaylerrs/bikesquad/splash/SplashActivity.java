@@ -123,6 +123,10 @@ public class SplashActivity extends AppCompatActivity implements GoogleApiClient
             }else {
                 mRelateSplash.setVisibility(View.GONE);
                 mRelateVerify.setVisibility(View.VISIBLE);
+
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                startActivity(intent);
+                this.finish();
             }
         }else {
             Intent intent = new Intent(SplashActivity.this, AuthActivity.class);
