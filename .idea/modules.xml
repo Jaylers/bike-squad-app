@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BikeSquad.iml" filepath="$PROJECT_DIR$/BikeSquad.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bike-squad-app.iml" filepath="$PROJECT_DIR$/bike-squad-app.iml" />
     </modules>
   </component>
 </project>

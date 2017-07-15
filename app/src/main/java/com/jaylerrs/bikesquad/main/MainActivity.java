@@ -29,6 +29,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.jaylerrs.bikesquad.R;
+import com.jaylerrs.bikesquad.biking.BikingActivity;
 import com.jaylerrs.bikesquad.events.fragment.MyPostsFragment;
 import com.jaylerrs.bikesquad.events.fragment.MyTopPostsFragment;
 import com.jaylerrs.bikesquad.events.fragment.RecentPostsFragment;
@@ -293,7 +294,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void bike(){
-
+        Intent intent = new Intent(MainActivity.this, BikingActivity.class);
+        startActivity(intent);
     }
 
     private void settings(){

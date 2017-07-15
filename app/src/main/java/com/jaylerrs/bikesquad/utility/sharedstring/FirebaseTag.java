@@ -27,4 +27,6 @@ public class FirebaseTag {
     public static String route_level_difficult =        "route-difficult";
 
     public static String star_count =                   "starCount";
+
+    public static String track =                        "track";
 }
