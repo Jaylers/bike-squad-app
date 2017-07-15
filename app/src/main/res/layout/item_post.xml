@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color_pastel_orange_alpha"
+        android:background="@color/color_pastel_orange"
         android:padding="10dp">
 
         <include
@@ -38,7 +38,7 @@
                 android:src="@drawable/ic_toggle_star_outline_24" />
 
             <TextView
-                android:id="@+id/post_num_stars"
+                android:id="@+id/route_num_stars"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"

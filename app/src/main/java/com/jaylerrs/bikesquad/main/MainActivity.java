@@ -19,6 +19,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -30,11 +31,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.jaylerrs.bikesquad.R;
 import com.jaylerrs.bikesquad.auth.AuthActivity;
-import com.jaylerrs.bikesquad.events.NewPostActivity;
 import com.jaylerrs.bikesquad.events.fragment.MyPostsFragment;
 import com.jaylerrs.bikesquad.events.fragment.MyTopPostsFragment;
 import com.jaylerrs.bikesquad.events.fragment.RecentPostsFragment;
 import com.jaylerrs.bikesquad.main.task.UserTask;
+import com.jaylerrs.bikesquad.route.NewRouteActivity;
+import com.jaylerrs.bikesquad.route.fragment.RecentRouteFragment;
+import com.jaylerrs.bikesquad.route.fragment.TopRouteFragment;
 import com.jaylerrs.bikesquad.users.ProfileActivity;
 import com.jaylerrs.bikesquad.utility.dialog.DialogLoading;
 import com.jaylerrs.bikesquad.utility.dialog.DialogNewsMessages;
@@ -69,7 +72,10 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, NewPostActivity.class));
+                Toast.makeText(getApplicationContext(),
+                        getString(R.string.app_message_select_route),
+                        Toast.LENGTH_LONG).show();
+                route();
             }
         });
 
@@ -149,7 +155,6 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_friends) {
-            actionBar.setTitle(getString(R.string.app_name));
             actionBar.setTitle(getString(R.string.menu_main_friends));
             friends();
         } else if (id == R.id.nav_event) {
@@ -171,36 +176,39 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void friends(){
-        mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
-            private final Fragment[] mFragments = new Fragment[] {
-                    new RecentPostsFragment(),
-                    new MyPostsFragment(),
-                    new MyTopPostsFragment(),
-            };
-            private final String[] mFragmentNames = new String[] {
-                    getString(R.string.menu_main_friends),
-            };
-            @Override
-            public Fragment getItem(int position) {
-                return mFragments[position];
-            }
-            @Override
-            public int getCount() {
-                return mFragments.length;
-            }
-            @Override
-            public CharSequence getPageTitle(int position) {
-                return mFragmentNames[position];
-            }
-        };
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mPagerAdapter);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);
+        Intent intent = new Intent(MainActivity.this, NewRouteActivity.class);
+        startActivity(intent);
+//        mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
+//            private final Fragment[] mFragments = new Fragment[] {
+//                    new RecentPostsFragment(),
+//                    new MyPostsFragment(),
+//                    new MyTopPostsFragment(),
+//            };
+//            private final String[] mFragmentNames = new String[] {
+//                    getString(R.string.menu_main_friends),
+//            };
+//            @Override
+//            public Fragment getItem(int position) {
+//                return mFragments[position];
+//            }
+//            @Override
+//            public int getCount() {
+//                return mFragments.length;
+//            }
+//            @Override
+//            public CharSequence getPageTitle(int position) {
+//                return mFragmentNames[position];
+//            }
+//        };
+//        // Set up the ViewPager with the sections adapter.
+//        mViewPager = (ViewPager) findViewById(R.id.container);
+//        mViewPager.setAdapter(mPagerAdapter);
+//        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+//        tabLayout.setupWithViewPager(mViewPager);
     }
 
     private void event(){
+        mPagerAdapter = null;
         mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             private final Fragment[] mFragments = new Fragment[] {
                     new RecentPostsFragment(),
@@ -226,7 +234,10 @@ public class MainActivity extends AppCompatActivity
             }
         };
         // Set up the ViewPager with the sections adapter.
+        mViewPager = (ViewPager) findViewById(R.id.route_container);
+        mViewPager.setVisibility(View.GONE);
         mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager.setVisibility(View.VISIBLE);
         mViewPager.setAdapter(mPagerAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
@@ -234,6 +245,38 @@ public class MainActivity extends AppCompatActivity
 
     private void route(){
 
+        mPagerAdapter = null;
+        mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
+
+            private final Fragment[] mFragments = new Fragment[] {
+                    new RecentRouteFragment(),
+                    new TopRouteFragment(),
+            };
+            private final String[] mFragmentNames = new String[] {
+                    getString(R.string.heading_route),
+                    getString(R.string.heading_top_route)
+            };
+            @Override
+            public Fragment getItem(int position) {
+                return mFragments[position];
+            }
+            @Override
+            public int getCount() {
+                return mFragments.length;
+            }
+            @Override
+            public CharSequence getPageTitle(int position) {
+                return mFragmentNames[position];
+            }
+        };
+        // Set up the ViewPager with the sections adapter.
+        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager.setVisibility(View.GONE);
+        mViewPager = (ViewPager) findViewById(R.id.route_container);
+        mViewPager.setVisibility(View.VISIBLE);
+        mViewPager.setAdapter(mPagerAdapter);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(mViewPager);
     }
 
     private void bike(){

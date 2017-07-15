@@ -34,8 +34,9 @@ public class UserInformation {
     private EditText mEdtBirthDate;
     private EditText mEdtWeight;
     private EditText mEdtHeight;
+    private EditText mEdtDisplayName;
 
-    private TextView mTxtUsername;
+    private TextView mTxtDisplayName;
     private TextView mTxtBirthDate;
     private TextView mTxtWeight;
     private TextView mTxtHeight;
@@ -54,8 +55,9 @@ public class UserInformation {
         mEdtBirthDate = (EditText) activity.findViewById(R.id.edt_profile_birth_date_value);
         mEdtWeight = (EditText) activity.findViewById(R.id.edt_profile_weight_value);
         mEdtHeight = (EditText) activity.findViewById(R.id.edt_profile_height_value);
+        mEdtDisplayName = (EditText) activity.findViewById(R.id.edt_profile_username_value);
 
-        mTxtUsername = (TextView) activity.findViewById(R.id.txt_profile_username_value);
+        mTxtDisplayName = (TextView) activity.findViewById(R.id.txt_profile_username_value);
         mTxtBirthDate = (TextView) activity.findViewById(R.id.txt_profile_birth_date_value);
         mTxtWeight =(TextView) activity.findViewById(R.id.txt_profile_weight_value);
         mTxtHeight = (TextView) activity.findViewById(R.id.txt_profile_height_value);
@@ -79,12 +81,13 @@ public class UserInformation {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                mTxtUsername.setText(dataSnapshot.child(FirebaseTag.user_username).getValue().toString());
+                mTxtDisplayName.setText(dataSnapshot.child(FirebaseTag.user_username).getValue().toString());
                 mTxtBirthDate.setText(dataSnapshot.child(FirebaseTag.user_birthDate).getValue().toString());
                 mTxtWeight.setText(dataSnapshot.child(FirebaseTag.user_weight).getValue().toString());
                 mTxtHeight.setText(dataSnapshot.child(FirebaseTag.user_height).getValue().toString());
                 mSwtPrivacy.setChecked(dataSnapshot.child(FirebaseTag.user_privacy).getValue().toString().equals("true"));
 
+                mEdtDisplayName.setText(dataSnapshot.child(FirebaseTag.user_username).getValue().toString());
                 mEdtBirthDate.setText(dataSnapshot.child(FirebaseTag.user_birthDate).getValue().toString());
                 mEdtWeight.setText(dataSnapshot.child(FirebaseTag.user_weight).getValue().toString());
                 mEdtHeight.setText(dataSnapshot.child(FirebaseTag.user_height).getValue().toString());
@@ -124,6 +127,7 @@ public class UserInformation {
     }
 
     public void disableEditor(){
+        mEdtDisplayName.setVisibility(View.GONE);
         mEdtBirthDate.setVisibility(View.GONE);
         mEdtHeight.setVisibility(View.GONE);
         mEdtWeight.setVisibility(View.GONE);
@@ -132,6 +136,7 @@ public class UserInformation {
         mEdtSave.setVisibility(View.GONE);
         mEdtCancel.setVisibility(View.GONE);
 
+        mTxtDisplayName.setVisibility(View.VISIBLE);
         mSwtPrivacy.setVisibility(View.VISIBLE);
         mTxtBirthDate.setVisibility(View.VISIBLE);
         mTxtWeight.setVisibility(View.VISIBLE);
@@ -139,6 +144,7 @@ public class UserInformation {
     }
 
     public void enableEditor(){
+        mEdtDisplayName.setVisibility(View.VISIBLE);
         mEdtBirthDate.setVisibility(View.VISIBLE);
         mEdtHeight.setVisibility(View.VISIBLE);
         mEdtWeight.setVisibility(View.VISIBLE);
@@ -147,6 +153,7 @@ public class UserInformation {
         mEdtSave.setVisibility(View.VISIBLE);
         mEdtCancel.setVisibility(View.VISIBLE);
 
+        mTxtDisplayName.setVisibility(View.GONE);
         mSwtPrivacy.setVisibility(View.GONE);
         mTxtBirthDate.setVisibility(View.GONE);
         mTxtWeight.setVisibility(View.GONE);
@@ -158,6 +165,9 @@ public class UserInformation {
 
         DatabaseReference userinfo = databaseReference.child(currentUser.getUid());
         userinfo.child(FirebaseTag.users).setValue(currentUser.getEmail());
+        if (!mEdtDisplayName.getText().toString().isEmpty()){
+            userinfo.child(FirebaseTag.user_username).setValue(mEdtDisplayName.getText().toString());
+        }
         if(!mEdtBirthDate.getText().toString().isEmpty()){
             userinfo.child(FirebaseTag.user_birthDate).setValue(mEdtBirthDate.getText().toString());
         }

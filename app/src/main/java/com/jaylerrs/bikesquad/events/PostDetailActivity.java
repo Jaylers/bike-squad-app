@@ -30,6 +30,9 @@ import com.jaylerrs.bikesquad.utility.sharedstring.FirebaseTag;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class PostDetailActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = "PostDetailActivity";
@@ -41,19 +44,22 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
     private ValueEventListener mPostListener;
     private String mPostKey;
     private CommentAdapter mAdapter;
+    private String route;
 
-    private ImageView mAuthorPhoto;
-    private TextView mAuthorView;
-    private TextView mTitleView;
-    private TextView mBodyView;
-    private EditText mCommentField;
-    private Button mCommentButton;
-    private RecyclerView mCommentsRecycler;
+    @BindView(R.id.post_author_photo) ImageView mAuthorPhoto;
+    @BindView(R.id.post_author) TextView mAuthorView;
+    @BindView(R.id.post_title) TextView mTitleView;
+    @BindView(R.id.post_body) TextView mBodyView;
+    @BindView(R.id.field_comment_text) EditText mCommentField;
+    @BindView(R.id.button_post_comment) Button mCommentButton;
+    @BindView(R.id.recycler_comments) RecyclerView mCommentsRecycler;
+    @BindView(R.id.post_route) TextView mRoute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_detail);
+        ButterKnife.bind(this);
 
         // Get post key from intent
         mPostKey = getIntent().getStringExtra(EXTRA_POST_KEY);
@@ -66,15 +72,6 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                 .child(FirebaseTag.post).child(mPostKey);
         mCommentsReference = FirebaseDatabase.getInstance().getReference()
                 .child(FirebaseTag.post_comments).child(mPostKey);
-
-        // Initialize Views
-        mAuthorPhoto = (ImageView) findViewById(R.id.post_author_photo);
-        mAuthorView = (TextView) findViewById(R.id.post_author);
-        mTitleView = (TextView) findViewById(R.id.post_title);
-        mBodyView = (TextView) findViewById(R.id.post_body);
-        mCommentField = (EditText) findViewById(R.id.field_comment_text);
-        mCommentButton = (Button) findViewById(R.id.button_post_comment);
-        mCommentsRecycler = (RecyclerView) findViewById(R.id.recycler_comments);
 
         mCommentButton.setOnClickListener(this);
         mCommentsRecycler.setLayoutManager(new LinearLayoutManager(this));
@@ -95,6 +92,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                 // [START_EXCLUDE]
                 mAuthorView.setText(post.author);
                 mTitleView.setText(post.title);
+                mRoute.setText(getString(R.string.heading_route).concat(" : ".concat(post.name)));
                 mBodyView.setText(post.body);
                 // [END_EXCLUDE]
             }
@@ -137,7 +135,9 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.button_post_comment) {
-            postComment();
+            if (mCommentField.getText().toString().isEmpty()){
+                mCommentField.setError(getString(R.string.err_message_required));
+            }else postComment();
         }
     }
 

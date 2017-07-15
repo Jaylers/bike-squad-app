@@ -43,10 +43,8 @@ public class SplashActivity extends AppCompatActivity implements GoogleApiClient
     private DatabaseReference databaseReference;
     private Boolean ver;
 
-    @BindView(R.id.txt_splash_message)
-    TextView mMessage;
-    @BindView(R.id.relate_splash_base)
-    RelativeLayout mRelate;
+    @BindView(R.id.txt_splash_message) TextView mMessage;
+    @BindView(R.id.relate_splash_base) RelativeLayout mRelate;
     @BindView(R.id.relate_splash) RelativeLayout mRelateSplash;
     @BindView(R.id.relate_splash_verify) RelativeLayout mRelateVerify;
     @BindView(R.id.txt_splash_warning) TextView mTxtWarning;
@@ -60,6 +58,8 @@ public class SplashActivity extends AppCompatActivity implements GoogleApiClient
         activity = this;
         TAG = this.getTitle().toString();
         mAuth = FirebaseAuth.getInstance();
+        mRelateSplash.setVisibility(View.VISIBLE);
+        mRelateVerify.setVisibility(View.GONE);
         // [START config_signin]
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -83,18 +83,15 @@ public class SplashActivity extends AppCompatActivity implements GoogleApiClient
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                ver = currentUser.isEmailVerified();
                 connectionChecker();
             }
-        }, 2500);
+        }, 800);
     }
 
     private void connectionChecker(){
         if (connection.isConnection()){
             connectionProperty();
         }else {
-            mMessage.setText(getString(R.string.err_message_connection_failure));
-            mMessage.setVisibility(View.VISIBLE);
             connectionFailure();
         }
     }
@@ -118,6 +115,7 @@ public class SplashActivity extends AppCompatActivity implements GoogleApiClient
     private void connectionProperty(){
 
         if (currentUser != null){
+            ver = currentUser.isEmailVerified();
             if (ver){
                 Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(intent);

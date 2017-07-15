@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/silver_overlay"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.jaylerrs.bikesquad.route.RouteDetailActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include
+            android:id="@+id/post_author_layout"
+            layout="@layout/include_route_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true" />
+
+        <include
+            android:id="@+id/post_text_layout"
+            layout="@layout/include_route_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/post_author_layout"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="10dp" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_bike_here"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/fab_new_event"
+            android:layout_marginTop="@dimen/fab_margin"
+            app:srcCompat="@drawable/img_bike" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_new_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@drawable/ic_action_edit" />
+
+        <LinearLayout
+            android:id="@+id/comment_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/post_text_layout"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_border_loading"
+            android:weightSum="1.0">
+
+            <EditText
+                android:id="@+id/field_comment_text"
+                android:layout_width="0dp"
+                android:layout_weight="0.8"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                style="@style/button_round_style"
+                android:hint="@string/write_a_comment"/>
+
+            <Button
+                android:id="@+id/button_post_comment"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_weight="0.2"
+                android:layout_margin="5dp"
+                android:layout_height="wrap_content"
+                android:text="@string/new_message_post"/>
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_comments"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/comment_form"
+            tools:listitem="@layout/item_comment" />
+    </RelativeLayout>
+
+</ScrollView>

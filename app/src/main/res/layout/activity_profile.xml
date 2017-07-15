@@ -61,16 +61,33 @@
 
     <TextView
         android:id="@+id/txt_profile_username_value"
-        android:layout_below="@id/txt_profile_detail"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:gravity="center"
-        android:layout_alignParentEnd="true"
         android:paddingEnd="50dp"
         android:paddingTop="@dimen/content_padding"
         android:paddingBottom="@dimen/content_padding"
         android:paddingStart="@dimen/content_padding"
-        android:text="@string/profile_message_username"/>
+        android:text="@string/profile_message_username"
+        android:layout_below="@+id/txt_profile_detail"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:id="@+id/edt_profile_username_value"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:padding="5dp"
+        android:paddingTop="@dimen/content_padding"
+        android:paddingBottom="@dimen/content_padding"
+        android:paddingStart="@dimen/content_padding"
+        android:layout_marginEnd="50dp"
+        style="@style/button_square_style"
+        android:hint="@string/profile_message_birth_date"
+        android:textAlignment="textEnd"
+        android:layout_below="@+id/txt_profile_detail"
+        android:visibility="gone"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/txt_profile_phone" />
 
     <TextView
         android:id="@+id/txt_profile_birth_date"

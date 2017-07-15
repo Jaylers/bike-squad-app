@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -17,6 +18,7 @@ import com.jaylerrs.bikesquad.R;
 import com.jaylerrs.bikesquad.events.models.Post;
 import com.jaylerrs.bikesquad.events.models.User;
 import com.jaylerrs.bikesquad.main.BaseActivity;
+import com.jaylerrs.bikesquad.route.RouteDetailActivity;
 import com.jaylerrs.bikesquad.utility.sharedstring.FirebaseTag;
 
 import java.util.HashMap;
@@ -29,6 +31,8 @@ public class NewPostActivity extends BaseActivity {
 
     private static final String TAG = "NewPostActivity";
     private static final String REQUIRED = "Required";
+    private String route_key;
+    private String route_name;
 
     // [START declare_database_ref]
     private DatabaseReference mDatabase;
@@ -37,12 +41,17 @@ public class NewPostActivity extends BaseActivity {
     @BindView(R.id.field_title) EditText mTitleField;
     @BindView(R.id.field_body) EditText mBodyField;
     @BindView(R.id.fab_submit_post) FloatingActionButton mSubmitButton;
+    @BindView(R.id.route_name) TextView mRoute_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_post);
         ButterKnife.bind(this);
+        Bundle extras = getIntent().getExtras();
+        route_key = extras.getString(RouteDetailActivity.EXTRA_POST_KEY);
+        route_name = extras.getString(RouteDetailActivity.EXTRA_POST_NAME);
+        mRoute_name.setText(route_name);
 
         // [START initialize_database_ref]
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -133,13 +142,13 @@ public class NewPostActivity extends BaseActivity {
     private void writeNewPost(String userId, String username, String title, String body) {
         // Create new post at /user-posts/$userid/$postid and at
         // /posts/$postid simultaneously
-        String key = mDatabase.child("posts").push().getKey();
-        Post post = new Post(userId, username, title, body);
+        String key = mDatabase.child(FirebaseTag.post).push().getKey();
+        Post post = new Post(userId, username, title, body, route_key, route_name);
         Map<String, Object> postValues = post.toMap();
 
         Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("/posts/" + key, postValues);
-        childUpdates.put("/user-posts/" + userId + "/" + key, postValues);
+        childUpdates.put("/"+FirebaseTag.post+"/" + key, postValues);
+        childUpdates.put("/"+FirebaseTag.user_post+"/" + userId + "/" + key, postValues);
 
         mDatabase.updateChildren(childUpdates);
     }
